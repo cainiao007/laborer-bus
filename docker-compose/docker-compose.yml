@@ -31,9 +31,9 @@ services:
       - 6379:6379
     env_file: .env
 
-  kvf-admin:
-    image: kvf/kvf:latest
-    container_name: kvf-admin
+  bus:
+    image: bus/bus:latest
+    container_name: bus
     restart: on-failure
     networks:
       - my-net

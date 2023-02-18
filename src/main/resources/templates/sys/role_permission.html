@@ -36,7 +36,7 @@
         var $ = layui.$, form = layui.form;
         var treeObj;
 
-        var id = kvfKit.getUrlParam('id');
+        var id = busKit.getUrlParam('id');
 
         //监听提交
         form.on('submit(kFormSubmit)', function(data){
@@ -64,14 +64,14 @@
                     if (r.code === req.status.ok) {
                         parent.layer.close(index); //再执行关闭
                     } else {
-                        kvfKit.errorMsg(r.msg);
+                        busKit.errorMsg(r.msg);
                     }
                 }
             });
 
         });
 
-        kvfKit.aGet(api.sys.menuRoleTree, {roleId: id || null}, function (r) {
+        busKit.aGet(api.sys.menuRoleTree, {roleId: id || null}, function (r) {
             var nodes = r.data;
             log('nodes=', nodes);
             /* 菜单树 */

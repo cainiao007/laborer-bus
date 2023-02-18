@@ -183,9 +183,9 @@
         var $headBtnBoxEl = $('#headBtnBox');
         var $rowBtnBoxEl = $('#rowBtnBox');
         var tableName = $('input[name="tableName"]').val();
-        var tableComment = kvfKit.getUrlParam('tableComment');
+        var tableComment = busKit.getUrlParam('tableComment');
         var moduleName = tableName.substring(0, tableName.indexOf('_'));
-        var funName = kvfKit.underlineToHump(tableName.substring(tableName.indexOf('_') + 1));
+        var funName = busKit.underlineToHump(tableName.substring(tableName.indexOf('_') + 1));
         var tipsIdx, timer;
         var prePerId = moduleName + ":" + funName;
         var headBtnSetObj = {
@@ -295,15 +295,15 @@
         }
 
         function renderHeadBtn(data) {
-            $headBtnBoxEl.append(kvfKit.renderTpl('btnTpl', data));
+            $headBtnBoxEl.append(busKit.renderTpl('btnTpl', data));
         }
 
         function renderRowBtn(data) {
-            $rowBtnBoxEl.append(kvfKit.renderTpl('btnTpl', data));
+            $rowBtnBoxEl.append(busKit.renderTpl('btnTpl', data));
         }
 
         function addColumn(data) {
-            $('#columnSetBox').append(kvfKit.renderTpl('columnSetTpl', data));
+            $('#columnSetBox').append(busKit.renderTpl('columnSetTpl', data));
             form.render('radio');
         }
 
@@ -361,7 +361,7 @@
             var arr = [];
             var $columnSetItemEl = $('#columnSetBox').find('.layui-form-item');
             $.each($columnSetItemEl, function (i, item) {
-                var id = kvfKit.underlineToHump($(item).data('id'));
+                var id = busKit.underlineToHump($(item).data('id'));
                 var comment = $(item).data('comment');
                 var _comment = $(item).data('_comment');
                 var dataType = $(item).data('type');
@@ -463,11 +463,11 @@
                 contentType: 'application/json',
                 success: function (r) {
                     if (r.code === req.status.ok) {
-                        kvfKit.sucessMsg('代码生成成功！');
+                        busKit.sucessMsg('代码生成成功！');
                         log(r.data);
                         html = r.data;
                     } else {
-                        kvfKit.errorMsg(r.msg);
+                        busKit.errorMsg(r.msg);
                     }
                 }
             });
@@ -478,7 +478,7 @@
             log('html...');
             if (!html) {
                 log('html2...');
-                return kvfKit.warningMsg('请先生成代码再预览');
+                return busKit.warningMsg('请先生成代码再预览');
             }
             var oidx = layer.open({
                 type: 1
@@ -498,7 +498,7 @@
                     if (field.id) {
                         delete headBtnSetObj[field.id];
                         headBtnSetObj[field.id] = field;
-                        $headBtnBoxEl.find('button[data-id="' + field.id + '"]').replaceWith(kvfKit.renderTpl('btnTpl', field));
+                        $headBtnBoxEl.find('button[data-id="' + field.id + '"]').replaceWith(busKit.renderTpl('btnTpl', field));
                     } else {
                         field.id = id;
                         headBtnSetObj[id] = field;
@@ -510,7 +510,7 @@
                     if (field.id) {
                         delete rowBtnSetObj[field.id];
                         rowBtnSetObj[field.id] = field;
-                        $rowBtnBoxEl.find('button[data-id="' + field.id + '"]').replaceWith(kvfKit.renderTpl('btnTpl', field));
+                        $rowBtnBoxEl.find('button[data-id="' + field.id + '"]').replaceWith(busKit.renderTpl('btnTpl', field));
                     } else {
                         field.id = id;
                         rowBtnSetObj[id] = field;

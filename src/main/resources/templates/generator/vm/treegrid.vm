@@ -14,10 +14,10 @@
 <div id="kPage" class="layui-fluid" style="padding: 0">
     <div class="layui-row">
         <div class="layui-col-md12" id="kMainContentCol">
-            <div class="layui-fluid kvf-fluid-padding15">
+            <div class="layui-fluid bus-fluid-padding15">
                 <div class="layui-card">
                     <form>
-                        <div class="layui-form layui-card-header kvf-card-header-auto">
+                        <div class="layui-form layui-card-header bus-card-header-auto">
                             <div class="layui-form-item">
                                 #foreach($queryColumn in $config.queryColumns)
                                 #if($queryColumn.dataType == 'timestamp' || $queryColumn.dataType == 'date' || $queryColumn.dataType == 'datetime')
@@ -204,7 +204,7 @@
                 #elseif($headButton.id == 2)
                 var checkData = treeGridInst.treegrid('getCheckedNodes');
                 if(checkData.length === 0){
-                    return kvfKit.warningMsg('请选择数据');
+                    return busKit.warningMsg('请选择数据');
                 }
                 layer.confirm('确定删除吗？', function(index) {
                     var ids = [];
@@ -220,9 +220,9 @@
                         success: function (r) {
                             if (r.code === req.status.ok) {
                                 treeGridKit.reload(treeGridInst);
-                                kvfKit.sucessMsg('已删除');
+                                busKit.sucessMsg('已删除');
                             } else {
-                                kvfKit.errorMsg(r.msg);
+                                busKit.errorMsg(r.msg);
                             }
                         }
                     });
@@ -270,9 +270,9 @@
                         success: function (r) {
                             if (r.code === req.status.ok) {
                                 treeGridKit.reload(treeGridInst);
-                                kvfKit.sucessMsg('已删除');
+                                busKit.sucessMsg('已删除');
                             } else {
-                                kvfKit.errorMsg(r.msg);
+                                busKit.errorMsg(r.msg);
                             }
                         }
                     });
@@ -297,7 +297,7 @@
             }
         };
 
-        kvfKit.activeInit(active);
+        busKit.activeInit(active);
 
         $(window).resize(function () {
             treeGridKit.fitRightFrozenCol(treeGridInst);
@@ -307,13 +307,13 @@
         var formatter = {
             #if($config.rowButtons.size() > 0)
             rowToolbar: function (value, row, index) {
-                return kvfKit.renderTpl('rowToolbarTpl', row);
+                return busKit.renderTpl('rowToolbarTpl', row);
             },
             #end
             #foreach($column in $config.columns)
             #if($column.columnCommentValueRelations != $null)
             $column.name: function (value, row, index) {
-                return kvfKit.renderTpl('${column.name}Tpl', row);
+                return busKit.renderTpl('${column.name}Tpl', row);
             },
             #end
             #end
@@ -348,7 +348,7 @@
         }
 
         // 绑定监听回车事件
-        kvfKit.bindEnterEventForLayuiForm();
+        busKit.bindEnterEventForLayuiForm();
 
     });
 </script>

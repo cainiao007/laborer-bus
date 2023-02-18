@@ -8,10 +8,10 @@
         <version>2.2.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.kalvin</groupId>
-    <artifactId>kvf</artifactId>
+    <groupId>com.laborer</groupId>
+    <artifactId>bus</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>kvf-admin</name>
+    <name>bus</name>
     <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
 
@@ -26,7 +26,7 @@
         <quartz.version>2.3.2</quartz.version>
         <hutool.version>4.5.1</hutool.version>
         <mysql.version>8.0.28</mysql.version>
-        <docker.image.prefix>kvf</docker.image.prefix>
+        <docker.image.prefix>bus</docker.image.prefix>
     </properties>
 
     <!--多环境参数配置-->
@@ -270,7 +270,7 @@
     </dependencies>
 
     <build>
-        <finalName>kvf-admin</finalName>
+        <finalName>bus</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -15,10 +15,10 @@
     <div class="layui-row">
         <!-- 主要内容块 -->
         <div class="layui-col-md12" id="kMainContentCol">
-            <div class="layui-fluid kvf-fluid-padding15">
+            <div class="layui-fluid bus-fluid-padding15">
                 <div class="layui-card">
                     <form>
-                        <div class="layui-form layui-card-header kvf-card-header-auto">
+                        <div class="layui-form layui-card-header bus-card-header-auto">
                             <div class="layui-form-item">
                                 <div class="layui-inline">
                                     <label class="layui-form-label">名称</label>
@@ -178,7 +178,7 @@
             batchdel: function () {
                 var checkData = treeGridInst.treegrid('getCheckedNodes');
                 if(checkData.length === 0){
-                    return kvfKit.warningMsg('请选择数据');
+                    return busKit.warningMsg('请选择数据');
                 }
                 layer.confirm('确定删除吗？', function(index) {
 
@@ -195,9 +195,9 @@
                         success: function (r) {
                             if (r.code === req.status.ok) {
                                 treeGridKit.reload(treeGridInst);
-                                kvfKit.sucessMsg('已删除');
+                                busKit.sucessMsg('已删除');
                             } else {
-                                kvfKit.errorMsg(r.msg);
+                                busKit.errorMsg(r.msg);
                             }
                         }
                     });
@@ -232,9 +232,9 @@
                         success: function (r) {
                             if (r.code === req.status.ok) {
                                 treeGridKit.reload(treeGridInst);
-                                kvfKit.sucessMsg('已删除');
+                                busKit.sucessMsg('已删除');
                             } else {
-                                kvfKit.errorMsg(r.msg);
+                                busKit.errorMsg(r.msg);
                             }
                         }
                     });
@@ -245,7 +245,7 @@
             }
         };
 
-        kvfKit.activeInit(active);
+        busKit.activeInit(active);
 
         $(window).resize(function () {
             treeGridKit.fitRightFrozenCol(treeGridInst);
@@ -254,13 +254,13 @@
         // 列格式化函数
         var formatter = {
             rowToolbar: function (value, row, index) {
-                return kvfKit.renderTpl('rowToolbarTpl', row);
+                return busKit.renderTpl('rowToolbarTpl', row);
             },
             icon: function (value, row, index) {
-                return kvfKit.renderTpl('iconTpl', row);
+                return busKit.renderTpl('iconTpl', row);
             },
             type: function (value, row, index) {
-                return kvfKit.renderTpl('typeTpl', row);
+                return busKit.renderTpl('typeTpl', row);
             }
         };
 
@@ -281,7 +281,7 @@
         }
 
         // 绑定监听回车事件
-        kvfKit.bindEnterEventForLayuiForm();
+        busKit.bindEnterEventForLayuiForm();
 
     });
 

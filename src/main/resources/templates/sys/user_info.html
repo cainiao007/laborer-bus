@@ -17,7 +17,7 @@
 <body style="background-color: #f2f2f2;">
 
 <div id="kPage" class="layui-fluid" style="padding: 0">
-    <div class="layui-row kvf-fluid-padding15">
+    <div class="layui-row bus-fluid-padding15">
         <div class="layui-col-md12">
             <div class="layui-card">
                 <div class="layui-card-header">设置我的资料</div>
@@ -132,14 +132,14 @@
                 if (r.code === req.status.ok) {
                     $('input[name="avatar"]').val(r.data.path);
                     $('#avatarImg').attr('src', BASE_WEB + "common/static/" + r.data.path);
-                    kvfKit.sucessMsg('上传成功');
+                    busKit.sucessMsg('上传成功');
                 } else {
-                    kvfKit.errorMsg('上传失败：' + r.msg);
+                    busKit.errorMsg('上传失败：' + r.msg);
                 }
             }
             ,error: function(index, upload) {
                 //请求异常回调
-                kvfKit.errorMsg('上传失败');
+                busKit.errorMsg('上传失败');
             }
         });
 
@@ -155,16 +155,16 @@
                 async: false,
                 success: function (r) {
                     if (r.code === req.status.ok) {
-                        kvfKit.sucessMsg('修改成功');
+                        busKit.sucessMsg('修改成功');
                     } else {
-                        kvfKit.errorMsg(r.msg);
+                        busKit.errorMsg(r.msg);
                     }
                 }
             });
         });
 
         $('#avatarImg').on('click', function () {
-            kvfKit.previewImg('window-img', $(this).attr('src'))
+            busKit.previewImg('window-img', $(this).attr('src'))
         });
 
     });

@@ -14,9 +14,9 @@
 
 <div id="kPage" class="layui-fluid" style="padding: 0">
     <!-- 主要内容块 -->
-    <div class="layui-fluid kvf-fluid-padding15">
+    <div class="layui-fluid bus-fluid-padding15">
         <div class="layui-card">
-            <!--<div class="layui-form layui-card-header kvf-card-header-auto">
+            <!--<div class="layui-form layui-card-header bus-card-header-auto">
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">角色分类</label>
@@ -55,10 +55,10 @@
     layui.use(['element', 'form', 'layer', 'table'], function () {
         var elemet = layui.element, form = layui.form, layer = layui.layer, table = layui.table;
 
-        var roleId = kvfKit.getUrlParam('id');
+        var roleId = busKit.getUrlParam('id');
 
         // 实例化table
-        kvfKit.initTableSet(table);
+        busKit.initTableSet(table);
         table.render({
             elem: '#kContentTable'
             ,url: api.sys.userRoleListData + '?roleId=' + roleId //数据接口
@@ -77,7 +77,7 @@
                     ,checkData = checkStatus.data; //得到选中的数据
 
                 if(checkData.length === 0){
-                    return kvfKit.warningMsg('请选择数据');
+                    return busKit.warningMsg('请选择数据');
                 }
 
                 layer.confirm('确定删除吗？', function(index) {
@@ -95,9 +95,9 @@
                         success: function (r) {
                             if (r.code === req.status.ok) {
                                 table.reload('kContentTable');
-                                kvfKit.sucessMsg('已删除');
+                                busKit.sucessMsg('已删除');
                             } else {
-                                kvfKit.errorMsg(r.msg);
+                                busKit.errorMsg(r.msg);
                             }
                         }
                     });

@@ -134,7 +134,7 @@ kvf-admin
 
 ### 本地部署
 * 通过git/gitee下载源码(推荐使用git，因为gitee不是实时更新的)，若是工作流OA版本，请clone activiti分支
-* 创建数据库：执行sql/kvf_admin.sql脚本创建数据库及表并初始化系统基础数据，若是工作流OA版本需要额外执行sql/kvf_admin_activiti.sql脚本
+* 创建数据库：执行sql/laborer-bus.sql脚本创建数据库及表并初始化系统基础数据，若是工作流OA版本需要额外执行sql/laborer-bus_activiti.sql脚本
 * 修改开发环境配置文件application-dev.yml，配置数据库账号和密码
 * 开发工具idea或eclipse还需要安装lombok插件，否则会提示找不到实体类的的get/set方法
 * 运行KvfAdminApplication.java，启动项目【kvf-admin】
@@ -215,7 +215,7 @@ docker-compose up -d kvf-admin
 * 前端通用配置js【kconfig.js】
 * 前端通用工具js【kcommon.js】
 * 前端静态文件引用统一管理配置【base.html】，在需要引用里面的配置的页面上引用即可，如引用通用的css：`<link th:replace="common/base::static"/>`
-* 后端自定义日志注解@Log("业务操作说明")[com.kalvin.kvf.common.annotation.Log]，在需要加入日志的controller方法上加这个注解即可
+* 后端自定义日志注解@Log("业务操作说明")[Log]，在需要加入日志的controller方法上加这个注解即可
 * 缓存使用[点我](https://my.oschina.net/sdlvzg/blog/1608871)：对需要加入缓存的方法上添加`@Cacheable(value="cache_name")`注解即可，同时需要在对应的方法上加上更新或删除缓存注解`@CacheEvict(value = "cache_name", allEntries = true)`;也可以使用redisTemplate添加删除更新缓存
 * 代码生成器使用文档[点我](https://github.com/kalvinGit/kvf-admin/wiki/kvf%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3)
 * Spring上下文工具【SpringContextKit.java】，可使用它手动获取指定bean。如`IUserService userService = SpringContextKit.getBean(IUserService.class);`

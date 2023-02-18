@@ -1,5 +1,5 @@
 /**
- * kvf-admin通用配置
+ * 通用配置
  * @type {{}}
  */
 var config = {
@@ -54,11 +54,11 @@ var req = {
 };
 
 /**
- * kvf-admin Api接口
+ * Api接口
  * @type {{}}
  */
 var api = {
-    homeView: BASE_WEB + '', // kvf-admin主页地址
+    homeView: BASE_WEB + '', // 主页地址
     login: BASE_WEB + 'login',
     captchaUrl: BASE_WEB + 'captcha',
     comm: {

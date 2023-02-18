@@ -63,7 +63,7 @@
     <div class="layui-row">
         <!-- 主要内容块 -->
         <div class="layui-col-md12" id="kMainContentCol">
-            <div class="layui-fluid kvf-fluid-padding15">
+            <div class="layui-fluid bus-fluid-padding15">
                 <div class="layui-card">
                     <div class="layui-tab layui-tab-card">
                         <ul class="layui-tab-title">
@@ -1151,7 +1151,7 @@
         // 复制到剪贴板
         var clipboard = new ClipboardJS('.icon-box');
         clipboard.on('success', function(e) {
-            kvfKit.sucessMsg('复制成功【' + e.text + '】');
+            busKit.sucessMsg('复制成功【' + e.text + '】');
             e.clearSelection();
         });
 

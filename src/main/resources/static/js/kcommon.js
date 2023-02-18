@@ -1,8 +1,8 @@
 /**
  * js工具
- * @type {{post: (function(*=, *=, *=): (*|string)), bindLeftTreeFlexEvent: kvfKit.bindLeftTreeFlexEvent, get: (function(*=, *=, *=): (*|string)), aGet: kvfKit.aGet, initTableSet: kvfKit.initTableSet, activeInit: kvfKit.activeInit, aPost: kvfKit.aPost, ajx: kvfKit.ajx, getUrlParam: kvfKit.getUrlParam, bindEnterEventForLayuiForm: kvfKit.bindEnterEventForLayuiForm}}
+ * @type {{post: (function(*=, *=, *=): (*|string)), bindLeftTreeFlexEvent: busKit.bindLeftTreeFlexEvent, get: (function(*=, *=, *=): (*|string)), aGet: busKit.aGet, initTableSet: busKit.initTableSet, activeInit: busKit.activeInit, aPost: busKit.aPost, ajx: busKit.ajx, getUrlParam: busKit.getUrlParam, bindEnterEventForLayuiForm: busKit.bindEnterEventForLayuiForm}}
  */
-var kvfKit = {
+var busKit = {
     /**
      * ajax 同步请求
      * @param url
@@ -182,13 +182,13 @@ var kvfKit = {
             } else {
                 if (isMbShowTree) {
                     $kContentLeftTreeColEl.find('ul.ztree').height(windowHeight - 65);
-                    $kPageEl.removeClass('kvf-flex');
+                    $kPageEl.removeClass('bus-flex');
                     $(this).removeClass('fa-angle-double-up');
                     $(this).addClass('fa-angle-double-down');
                     isMbShowTree = false;
                 } else {
                     $kContentLeftTreeColEl.find('ul.ztree').height('auto');
-                    $kPageEl.addClass('kvf-flex');
+                    $kPageEl.addClass('bus-flex');
                     $(this).removeClass('fa-angle-double-down');
                     $(this).addClass('fa-angle-double-up');
                     isMbShowTree = true;

@@ -10,10 +10,10 @@
 
 <div id="kPage" class="layui-fluid" style="padding: 0">
     <!-- 主要内容块 -->
-    <div class="layui-fluid kvf-fluid-padding15">
+    <div class="layui-fluid bus-fluid-padding15">
         <div class="layui-card">
             <form>
-                <div class="layui-form layui-card-header kvf-card-header-auto">
+                <div class="layui-form layui-card-header bus-card-header-auto">
                     <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">登录名</label>
@@ -77,11 +77,11 @@
             refresh: function () {
                 var $form = $('form');
                 $form[0].reset();
-                renderTableData(kvfKit.getFormJson($form));
+                renderTableData(busKit.getFormJson($form));
             }
         };
 
-        kvfKit.activeInit(active);
+        busKit.activeInit(active);
 
         function renderTableData(params) {
             params = params ? params : {};
@@ -98,7 +98,7 @@
         }
 
         // 绑定监听回车事件
-        kvfKit.bindEnterEventForLayuiForm();
+        busKit.bindEnterEventForLayuiForm();
 
     });
 </script>

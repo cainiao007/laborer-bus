@@ -21,9 +21,9 @@
     </style>
 </head>
 <body style="background-color: #f2f2f2;">
-<div class="layui-fluid kvf-fluid-padding15">
+<div class="layui-fluid bus-fluid-padding15">
     <div class="layui-card">
-        <div class="layui-form layui-card-header kvf-card-header-auto">
+        <div class="layui-form layui-card-header bus-card-header-auto">
             <div class="layui-form-item">
                 <div class="layui-inline">
                     <label class="layui-form-label">文章ID</label>
@@ -135,9 +135,9 @@
                         success: function (r) {
                             if (r.code === req.status.ok) {
                                 table.reload(tableId);
-                                kvfKit.sucessMsg('已删除');
+                                busKit.sucessMsg('已删除');
                             } else {
-                                kvfKit.errorMsg(r.msg);
+                                busKit.errorMsg(r.msg);
                             }
                         }
                     });

@@ -118,7 +118,7 @@
     layui.use(['form'], function () {
         var $ = layui.$, form = layui.form;
 
-        var deptId = kvfKit.getUrlParam('deptId');
+        var deptId = busKit.getUrlParam('deptId');
         if (!deptId) {
             deptId = $('input[name="deptId"]').val();
         }
@@ -218,7 +218,7 @@
                         parent.layui.table.reload('kContentTable'); //重载表格
                         parent.layer.close(index); //再执行关闭
                     } else {
-                        kvfKit.errorMsg(r.msg);
+                        busKit.errorMsg(r.msg);
                     }
                 }
             });

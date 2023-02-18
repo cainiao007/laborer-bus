@@ -11,9 +11,9 @@
 <body style="background-color: #f2f2f2;">
 
 <div id="kPage" class="layui-fluid" style="padding: 0">
-    <div class="layui-fluid kvf-fluid-padding15">
+    <div class="layui-fluid bus-fluid-padding15">
         <div class="layui-card">
-            <div class="layui-form layui-card-header kvf-card-header-auto">
+            <div class="layui-form layui-card-header bus-card-header-auto">
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">用户账号</label>
@@ -73,10 +73,10 @@
     layui.use(['element', 'form', 'layer', 'table'], function () {
         var elemet = layui.element, form = layui.form, layer = layui.layer, table = layui.table;
 
-        var roleId = kvfKit.getUrlParam('roleId');
+        var roleId = busKit.getUrlParam('roleId');
 
         // 实例化table
-        kvfKit.initTableSet(table);
+        busKit.initTableSet(table);
         var tableIns = table.render({
             elem: '#kContentTable'
             ,url: api.sys.userListData //数据接口
@@ -102,7 +102,7 @@
                 ,checkData = checkStatus.data; //得到选中的数据
 
             if(checkData.length === 0){
-                return kvfKit.warningMsg('请选择数据');
+                return busKit.warningMsg('请选择数据');
             }
 
             var ids = [];
@@ -124,7 +124,7 @@
                         parent.layui.table.reload('kContentTable'); // 刷新角色列表
                         parent.layer.close(index); //再执行关闭
                     } else {
-                        kvfKit.errorMsg(r.msg);
+                        busKit.errorMsg(r.msg);
                     }
                 }
             });

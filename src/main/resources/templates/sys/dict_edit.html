@@ -71,8 +71,8 @@
     layui.use(['form', 'laydate'], function () {
         var $ = layui.$, form = layui.form, laydate = layui.laydate;
 
-        var parentId = kvfKit.getUrlParam('parentId');
-        var type = kvfKit.getUrlParam('type');
+        var parentId = busKit.getUrlParam('parentId');
+        var type = busKit.getUrlParam('type');
         var $typeRadioEl = $('#typeRadio');
         log(type)
 
@@ -106,7 +106,7 @@
                         parent.$('#kTreeGrid').treegrid('reload', {id: Number(parentId)});
                         parent.layer.close(index); //再执行关闭
                     } else {
-                        kvfKit.errorMsg(r.msg);
+                        busKit.errorMsg(r.msg);
                     }
                 }
             });

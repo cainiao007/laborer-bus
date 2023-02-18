@@ -313,12 +313,6 @@
                         &lt;!&ndash; 如果有新消息，则显示小圆点 &ndash;&gt;
                         <span class="layui-badge-dot"></span>
                     </a>
-                </li>-->
-                <li class="layui-nav-item layui-hide-xs" lay-unselect="">
-                    <a href="https://github.com/kalvinGit/kvf-admin" target="_blank">
-                        <i class="layui-icon layui-icon-download-circle">项目源码</i>
-                    </a>
-                </li>
                 <li class="layui-nav-item layui-hide-xs" lay-unselect="">
                     <a href="javascript:;" data-event="theme">
                         <i class="layui-icon layui-icon-theme"></i>
@@ -330,7 +324,7 @@
                     </a>
                 </li>
                 <li class="layui-nav-item" lay-unselect="">
-                    <img th:src="@{/} + ${#strings.isEmpty(authUserInfo.avatar)?'static/image/avatar/default.png':'common/static/'+authUserInfo.avatar}" class="kvf-user-head">
+                    <img th:src="@{/} + ${#strings.isEmpty(authUserInfo.avatar)?'static/image/avatar/default.png':'common/static/'+authUserInfo.avatar}" class="bus-user-head">
                 </li>
                 <li class="layui-nav-item" lay-unselect="">
                     <a href="javascript:;">
@@ -360,7 +354,7 @@
 
         <div class="layui-side layui-side-menu layui-bg-black" id="kAppLeftNavBox">
             <div class="layui-side-scroll" style="width: 240px">
-                <div class="layui-logo"><span style="color: #ffffff">kvfAdmin</span></div>
+                <div class="layui-logo"><span style="color: #ffffff">班车管理系统</span></div>
                 <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
                 <ul class="layui-nav layui-nav-tree" id="leftNav" lay-filter="kAppLeftNavFilter"></ul>
             </div>
@@ -390,53 +384,53 @@
         <div id="kAppThemeContent" class="layui-fluid" style="display: none">
             <div class="layui-card-header">主题配色</div>
             <div class="layui-card-body">
-                <ul class="kvf-theme-ul" id="kAppThemeUl">
-                    <li class="kvf-theme-li" data-theme="kvf-default-theme">
+                <ul class="bus-theme-ul" id="kAppThemeUl">
+                    <li class="bus-theme-li" data-theme="kvf-default-theme">
                         <span class="layui-badge-dot layui-bg-black"></span>
                         <span class="layui-badge-dot" style="background: #ffffff"></span>
                         <span class="layui-badge-dot layui-bg-green"></span>
                     </li>
-                    <li class="kvf-theme-li" data-theme="kvf-l-bisque-theme">
+                    <li class="bus-theme-li" data-theme="kvf-l-bisque-theme">
                         <span class="layui-badge-dot" style="background: #292018"></span>
                         <span class="layui-badge-dot" style="background: #ffffff"></span>
                         <span class="layui-badge-dot" style="background: #94785c"></span>
                     </li>
-                    <li class="kvf-theme-li" data-theme="kvf-l-blue-theme">
+                    <li class="bus-theme-li" data-theme="kvf-l-blue-theme">
                         <span class="layui-badge-dot layui-bg-blue"></span>
                         <span class="layui-badge-dot" style="background: #ffffff"></span>
                         <span class="layui-badge-dot layui-bg-blue"></span>
                     </li>
-                    <li class="kvf-theme-li" data-theme="kvf-l-red-theme">
+                    <li class="bus-theme-li" data-theme="kvf-l-red-theme">
                         <span class="layui-badge-dot"></span>
                         <span class="layui-badge-dot" style="background: #ffffff"></span>
                         <span class="layui-badge-dot"></span>
                     </li>
-                    <li class="kvf-theme-li" data-theme="kvf-l-orange-theme">
+                    <li class="bus-theme-li" data-theme="kvf-l-orange-theme">
                         <span class="layui-badge-dot layui-bg-orange"></span>
                         <span class="layui-badge-dot" style="background: #ffffff"></span>
                         <span class="layui-badge-dot layui-bg-orange"></span>
                     </li>
-                    <li class="kvf-theme-li" data-theme="kvf-green-theme">
+                    <li class="bus-theme-li" data-theme="kvf-green-theme">
                         <span class="layui-badge-dot" style="background: #226A62"></span>
                         <span class="layui-badge-dot" style="background: #2a877b"></span>
                         <span class="layui-badge-dot" style="background: #2a877b"></span>
                     </li>
-                    <li class="kvf-theme-li" data-theme="kvf-blue-theme">
+                    <li class="bus-theme-li" data-theme="kvf-blue-theme">
                         <span class="layui-badge-dot" style="background: #0085e8"></span>
                         <span class="layui-badge-dot" style="background: #1e9fff"></span>
                         <span class="layui-badge-dot" style="background: #1e9fff"></span>
                     </li>
-                    <li class="kvf-theme-li" data-theme="kvf-red-theme">
+                    <li class="bus-theme-li" data-theme="kvf-red-theme">
                         <span class="layui-badge-dot layui-bg-black"></span>
                         <span class="layui-badge-dot"></span>
                         <span class="layui-badge-dot"></span>
                     </li>
-                    <li class="kvf-theme-li" data-theme="kvf-black-theme">
+                    <li class="bus-theme-li" data-theme="kvf-black-theme">
                         <span class="layui-badge-dot layui-bg-black"></span>
                         <span class="layui-badge-dot" style="background: #393d49"></span>
                         <span class="layui-badge-dot layui-bg-green"></span>
                     </li>
-                    <li class="kvf-theme-li" data-theme="kvf-pink-theme">
+                    <li class="bus-theme-li" data-theme="kvf-pink-theme">
                         <span class="layui-badge-dot" style="background: #50314F"></span>
                         <span class="layui-badge-dot" style="background: #50314F"></span>
                         <span class="layui-badge-dot" style="background: #7a4d7b"></span>
@@ -469,7 +463,7 @@
         renderTheme();
 
         // 渲染横向导航菜单栏
-        kvfKit.aGet(api.comm.userNavMenus, function (r) {
+        busKit.aGet(api.comm.userNavMenus, function (r) {
             laytpl($('#headNavTpl').html()).render(r.data, function (html) {
                 var sb = new StringBuilder();
                 sb.append('<li class="layui-nav-item" lay-unselect="">');
@@ -482,7 +476,7 @@
         });
 
         // 渲染左侧导航栏
-        kvfKit.aGet(api.comm.userMenus, function (r) {
+        busKit.aGet(api.comm.userMenus, function (r) {
             laytpl($('#leftNavTpl').html()).render(r.data, function (html) {
                 $('#leftNav').html(html);
                 element.render('nav', 'kAppLeftNavFilter');
@@ -513,7 +507,7 @@
         });
 
         // 事件监听
-        kvfKit.activeInit({
+        busKit.activeInit({
             serach : function () {
             },
             message : function () {
@@ -548,7 +542,7 @@
                 layer.confirm('是否退出登录？', {
                     btn: ['是', '否']
                 }, function(){
-                    kvfKit.aGet('/logout', function (r) {
+                    busKit.aGet('/logout', function (r) {
                         if (r.code === req.status.ok) {
                             parent.window.location.replace(api.login);
                         }
@@ -581,8 +575,8 @@
             var theme = $(this).data('theme');
             $kAppPageEl.removeClass(cl.replace('layadmin-side-shrink', ''));
             $kAppPageEl.addClass(theme);
-            $kAppThemeUlEl.find('.kvf-theme-this').removeClass('kvf-theme-this');
-            $(this).addClass('kvf-theme-this');
+            $kAppThemeUlEl.find('.bus-theme-this').removeClass('bus-theme-this');
+            $(this).addClass('bus-theme-this');
 
             // 主题存储在本地
             localStorage.setItem('myTheme', theme);
@@ -591,7 +585,7 @@
         function renderTheme() {
             var localTheme = localStorage.getItem('myTheme');
             $('#kAppPage').addClass(localTheme);
-            $('#kAppThemeUl').find('li[data-theme="' + localTheme + '"]').addClass('kvf-theme-this');
+            $('#kAppThemeUl').find('li[data-theme="' + localTheme + '"]').addClass('bus-theme-this');
         }
 
         function pageAdd(menuId, iframeId, name, menuUrl){

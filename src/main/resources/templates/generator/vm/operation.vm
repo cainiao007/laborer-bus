@@ -54,7 +54,7 @@
         var $ = layui.$, form = layui.form, laydate = layui.laydate;
 
         #if($config.tableType == 'tree_grid')
-        var parentId = kvfKit.getUrlParam('parentId');
+        var parentId = busKit.getUrlParam('parentId');
         #end
 
         #foreach($column in $config.allColumns)
@@ -96,7 +96,7 @@
                         #end
                         parent.layer.close(index); //再执行关闭
                     } else {
-                        kvfKit.errorMsg(r.msg);
+                        busKit.errorMsg(r.msg);
                     }
                 }
             });

@@ -3,7 +3,7 @@ body {
 }
 
 /*登录页 start*/
-.kvf-user-login {
+.bus-user-login {
     position: relative;
     left: 0;
     top: 0;
@@ -11,18 +11,18 @@ body {
     min-height: 100%;
     box-sizing: border-box;
 }
-.kvf-user-login-main {
+.bus-user-login-main {
     width: 375px;
     margin: 0 auto;
     box-sizing: border-box;
 }
-.kvf-user-login-box {
+.bus-user-login-box {
     padding: 20px;
 }
-.kvf-user-login-header {
+.bus-user-login-header {
     text-align: center;
 }
-.kvf-user-login-icon {
+.bus-user-login-icon {
     position: absolute;
     /*left: 1px;*/
     /*top: 1px;*/
@@ -31,13 +31,13 @@ body {
     text-align: center;
     color: #d2d2d2;
 }
-.kvf-user-login-codeimg {
+.bus-user-login-codeimg {
     max-height: 38px;
     width: 100%;
     cursor: pointer;
     box-sizing: border-box;
 }
-.kvf-user-login-footer {
+.bus-user-login-footer {
     position: absolute;
     left: 0;
     bottom: 0;
@@ -48,37 +48,37 @@ body {
     box-sizing: border-box;
     color: rgba(0,0,0,.5);
 }
-.kvf-user-login .layui-form .layui-form-item input {
+.bus-user-login .layui-form .layui-form-item input {
     padding-left: 38px;
 }
-.kvf-user-jump-change {
+.bus-user-jump-change {
     float: right;
     color: #029789!important;
 }
 /*登录页 end*/
 
-.kvf-user-head {
+.bus-user-head {
     height: 30px;
     width: 30px;
     border-radius: 30px;
 }
 
 /*内容主体样式*/
-.kvf-card-header-auto {
+.bus-card-header-auto {
     padding-top: 24px;
     padding-bottom: 15px;
     height: auto;
 }
 
-.kvf-card-header-auto .layui-form-item:last-child {
+.bus-card-header-auto .layui-form-item:last-child {
     margin-bottom: 0;
 }
 
-.kvf-fluid-padding15 {
+.bus-fluid-padding15 {
     padding: 15px;
 }
 
-.kvf-theme-ul {
+.bus-theme-ul {
     display: block;
     list-style-type: disc;
     margin-block-start: 1em;
@@ -87,7 +87,7 @@ body {
     margin-inline-end: 0;
     /*padding-inline-start: 40px;*/
 }
-.kvf-theme-li {
+.bus-theme-li {
     position: relative;
     display: inline-block;
     vertical-align: top;
@@ -101,7 +101,7 @@ body {
     color: #666;
     padding: 5px;
 }
-.kvf-theme-li:hover, .kvf-theme-li.kvf-theme-this {
+.bus-theme-li:hover, .bus-theme-li.bus-theme-this {
     border: 1px solid green !important;
 }
 
@@ -120,11 +120,11 @@ body {
     #kMainContentCol {
         width: 100%!important;
     }
-    #kMainContentCol .kvf-fluid-padding15 {
+    #kMainContentCol .bus-fluid-padding15 {
         padding-top: 5px;
     }
 
-    .kvf-flex .layui-card ul.ztree {
+    .bus-flex .layui-card ul.ztree {
         display: block!important;
     }
 }

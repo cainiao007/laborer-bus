@@ -80,7 +80,7 @@
             error: function(id, url, searchVal, err){           //使用远程方式的error回调
                 //同上
                 console.log(err);   //err对象
-                kvfKit.errorMsg(err.msg);
+                busKit.errorMsg(err.msg);
             },
             beforeSuccess: function(id, url, searchVal, result){        //success之前的回调, 干嘛呢? 处理数据的, 如果后台不想修改数据, 你也不想修改源码, 那就用这种方式处理下数据结构吧
                 if (result.code === req.status.ok) {

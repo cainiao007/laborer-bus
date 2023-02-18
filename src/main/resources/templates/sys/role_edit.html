@@ -44,7 +44,7 @@
     layui.use(['form'], function () {
         var $ = layui.$, form = layui.form;
 
-        var parentId = kvfKit.getUrlParam('parentId');
+        var parentId = busKit.getUrlParam('parentId');
 
         //监听提交
         form.on('submit(kFormSubmit)', function(data){
@@ -65,7 +65,7 @@
                         parent.$('#kTreeGrid').treegrid('reload', {id: Number(parentId)});
                         parent.layer.close(index); //再执行关闭
                     } else {
-                        kvfKit.errorMsg(r.msg);
+                        busKit.errorMsg(r.msg);
                     }
                 }
             });
