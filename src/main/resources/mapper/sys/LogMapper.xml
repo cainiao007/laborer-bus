@@ -22,7 +22,9 @@
     </sql>
 
     <select id="selectLogList" resultType="com.laborer.bus.modules.sys.entity.Log">
-        select <include refid="Base_Column_List" /> from sys_log
+        select
+        <include refid="Base_Column_List" />
+        from sys_log
         <trim prefix="where" prefixOverrides="and">
             <if test="log.username != null and log.username != ''">
                 AND username LIKE concat("%", #{log.username, jdbcType=VARCHAR}, "%")

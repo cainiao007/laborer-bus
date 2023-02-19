@@ -2,7 +2,7 @@ package com.laborer.bus.common.constant;
 
 /**
  * 上传路径枚举
- * @author Kalvin
+ * @author zhao zhenqiang
  */
 public enum UploadPathEnum {
     FILE_PATH("file", "file"),   // 默认其它文件路径

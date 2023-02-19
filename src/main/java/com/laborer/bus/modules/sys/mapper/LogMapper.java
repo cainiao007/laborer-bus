@@ -1,8 +1,8 @@
 package com.laborer.bus.modules.sys.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.laborer.bus.modules.sys.entity.Log;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -12,8 +12,8 @@ import java.util.List;
  * 日志表 Mapper 接口
  * </p>
  *
- * @author Kalvin
- * @since 2019-05-10
+ * @author zhao zhenqiang
+ * @since 2023-02-18
  */
 public interface LogMapper extends BaseMapper<Log> {
 

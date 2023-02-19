@@ -1,9 +1,10 @@
-package com.laborer.bus.modules.sys.service;
+package com.laborer.bus.modules.sys.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.laborer.bus.modules.sys.entity.RoleMenu;
 import com.laborer.bus.modules.sys.mapper.RoleMenuMapper;
+import com.laborer.bus.modules.sys.service.IRoleMenuService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  * 角色菜单表 服务实现类
  * </p>
  *
- * @author Kalvin
+ * @author zhao zhenqiang
  * @since 2019-04-29
  */
 @Service

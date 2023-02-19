@@ -19,8 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
  * 日志表 前端控制器
  * </p>
  *
- * @author Kalvin
- * @since 2019-05-10
+ * @author zhao zhenqiang
+ * @since 2023-02-18
  */
 @RestController
 @RequestMapping("sys/log")

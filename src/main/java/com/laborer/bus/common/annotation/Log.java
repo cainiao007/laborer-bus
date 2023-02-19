@@ -5,7 +5,7 @@ import java.lang.annotation.*;
 /** 
  * 【作用】系统操作日志注解<br>
  * 【说明】（无）
- * @author Kalvin
+ * @author zhao zhenqiang
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

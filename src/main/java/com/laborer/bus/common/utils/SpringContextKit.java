@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * 作用】Spring上下文工具<br>
  * 说明：(无)
  *
- * @author kalvin
+ * @author zhao zhenqiang
  * @Date 2019年04月08日 9:48
  */
 @Component

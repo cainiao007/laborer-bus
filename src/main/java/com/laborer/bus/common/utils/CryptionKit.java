@@ -8,7 +8,7 @@ import com.laborer.bus.common.constant.SysConstant;
  * 作用：加密解密<br>
  * 说明：(无)
  *
- * @author Kalvin
+ * @author zhao zhenqiang
  * @Date 2019年05月05日 14:48
  */
 public class CryptionKit {
@@ -17,7 +17,7 @@ public class CryptionKit {
      * 【作用】生成初始密码<br>
      * 【说明】系统用户密码
      * @param
-     * @author Kalvin
+     * @author zhao zhenqiang
      * @Date 2018/1/4 17:14
      */
     public static String genUserPwd() {

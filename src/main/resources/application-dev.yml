@@ -15,7 +15,7 @@ spring:
       strict: false #设置严格模式,默认false不启动. 启动后在未匹配到指定数据源时候会抛出异常,不启动则使用默认数据源.
       datasource:
         master: # 主数据源
-          url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/yumi-bus?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
+          url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/laborer-bus?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
           username: ${MYSQL_USERNAME:root}
           password: ${MYSQL_PASSWORD:123456}
           driver-class-name: com.mysql.cj.jdbc.Driver # 3.2.0开始支持SPI可省略此配置
@@ -104,7 +104,7 @@ spring:
 mybatis-plus:
   check-config-location: false
   mapper-locations: classpath:mapper/**/*.xml
-  type-aliases-package: com.laborer.bus.entity.*
+  type-aliases-package: com.laborer.bus.**.entity.*
   configuration:
     map-underscore-to-camel-case: true
   global-config:

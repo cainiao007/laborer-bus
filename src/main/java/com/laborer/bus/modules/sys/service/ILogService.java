@@ -9,8 +9,8 @@ import com.laborer.bus.modules.sys.entity.Log;
  * 日志表 服务类
  * </p>
  *
- * @author Kalvin
- * @since 2019-05-10
+ * @author zhao zhenqiang
+ * @since 2023-02-18
  */
 public interface ILogService extends IService<Log> {
 

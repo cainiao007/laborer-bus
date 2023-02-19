@@ -11,7 +11,7 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 /**
  * 【作用】代码生成器<br>
  * 【说明】（无）
- * @author Kalvin
+ * @author zhao zhenqiang
  * @Date 2019/4/16 15:11
  */
 public class CodeGenerator {
@@ -24,7 +24,7 @@ public class CodeGenerator {
     private static String outputDir = "D://genCode";   // 代码生成的路径目录
     private static String dbUrl = "jdbc:mysql://localhost:3306/activiti_k?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&tinyInt1isBit=false&serverTimezone=GMT%2B8";
     private static String dbUsername = "root";
-    private static String dbPassword = "root";
+    private static String dbPassword = "123456";
 
     public static void main(String[] args) {
         generateByTables(serviceNameStartWithI, packageName, tableNames);
@@ -45,7 +45,7 @@ public class CodeGenerator {
                 .setCapitalMode(true)
                 .setEntityLombokModel(true)
 //                .setDbColumnUnderline(true)
-                .setTablePrefix(tablePrefix)
+//                .setTablePrefix(tablePrefix)
                 .setNaming(NamingStrategy.underline_to_camel)
                 .setInclude(tableNames)//修改替换成你需要的表名，多个表名传数组
                 .setRestControllerStyle(true)

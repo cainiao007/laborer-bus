@@ -15,7 +15,7 @@ import java.io.IOException;
 
 /**
  * 文件上传工具
- * @author Kalvin
+ * @author zhao zhenqiang
  */
 public class FileUploadKit {
 

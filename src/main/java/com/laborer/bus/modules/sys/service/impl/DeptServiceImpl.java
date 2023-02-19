@@ -1,4 +1,4 @@
-package com.laborer.bus.modules.sys.service;
+package com.laborer.bus.modules.sys.service.impl;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.StrUtil;
@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.laborer.bus.common.constant.Constants;
 import com.laborer.bus.modules.sys.entity.Dept;
 import com.laborer.bus.modules.sys.mapper.DeptMapper;
+import com.laborer.bus.modules.sys.service.IDeptService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,7 +20,7 @@ import java.util.List;
  * 部门表 服务实现类
  * </p>
  *
- * @author Kalvin
+ * @author zhao zhenqiang
  * @since 2019-04-29
  */
 @Service

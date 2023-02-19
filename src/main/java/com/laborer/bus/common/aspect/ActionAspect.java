@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 /**
  * 【作用】操作日志，切面处理类<br>
  * 【说明】（无）
- * @author Kalvin
+ * @author zhao zhenqiang
  */
 @Aspect
 @Component

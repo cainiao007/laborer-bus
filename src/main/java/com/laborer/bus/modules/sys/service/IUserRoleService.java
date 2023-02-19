@@ -13,7 +13,7 @@ import java.util.List;
  * 用户与角色对应关系 服务类
  * </p>
  *
- * @author Kalvin
+ * @author zhao zhenqiang
  * @since 2019-04-29
  */
 public interface IUserRoleService extends IService<UserRole> {

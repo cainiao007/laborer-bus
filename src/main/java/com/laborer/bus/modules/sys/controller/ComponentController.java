@@ -6,9 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-/**
- * Create by Kalvin on 2020/4/1.
- */
 @RestController
 @RequestMapping(value = "sys/component")
 public class ComponentController {

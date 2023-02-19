@@ -1,4 +1,4 @@
-package com.laborer.bus.modules.sys.service;
+package com.laborer.bus.modules.sys.service.impl;
 
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.laborer.bus.modules.sys.entity.Dict;
 import com.laborer.bus.modules.sys.mapper.DictMapper;
+import com.laborer.bus.modules.sys.service.DictService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,7 +16,7 @@ import java.util.List;
  * <p>
  * 字典表 服务实现类
  * </p>
- * @since 2019-08-10 15:52:56
+ * @since 2023-02-18 15:52:56
  */
 @Service
 public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements DictService {

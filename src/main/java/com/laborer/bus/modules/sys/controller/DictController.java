@@ -17,7 +17,7 @@ import java.util.List;
  * <p>
  * 字典表 前端控制器
  * </p>
- * @since 2019-08-10 16:00:10
+ * @since 2023-02-18 16:00:10
  */
 @RestController
 @RequestMapping("sys/dict")

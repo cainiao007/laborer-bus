@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
  * 查询列配置
- * @author Kalvin
+ * @author zhao zhenqiang
  * @Date 2019/06/13 10:45
  */
 @Data

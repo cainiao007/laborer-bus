@@ -11,7 +11,7 @@ import java.util.List;
  * 部门表 服务类
  * </p>
  *
- * @author Kalvin
+ * @author zhao zhenqiang
  * @since 2019-04-29
  */
 public interface IDeptService extends IService<Dept> {

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laborer.bus.modules.bus.mapper.RouteMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.laborer.bus.modules.bus.entity.Route">
+        <id column="id" property="id" />
+        <result column="car_num" property="carNum" />
+        <result column="car_type" property="carType" />
+        <result column="car_num_type" property="carNumType" />
+        <result column="driver_uid" property="driverUid" />
+        <result column="capacity" property="capacity" />
+        <result column="start_adress" property="startAdress" />
+        <result column="end_adress" property="endAdress" />
+        <result column="depart_time" property="departTime" />
+        <result column="del_flag" property="delFlag" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+       id, car_num, car_type, car_num_type, driver_uid, capacity, start_adress, end_adress, depart_time, del_flag, create_by, create_time, update_by, update_time
+    </sql>
+
+    <select id="selectRouteList" resultType="com.laborer.bus.modules.bus.entity.Route">
+        select <include refid="Base_Column_List" /> from bus_route
+        <trim prefix="where" prefixOverrides="and">
+            <if test="route.carNum != null and route.carNum != ''">
+                and car_num like concat(#{route.carNum}, "%")
+            </if>
+            <if test="route.carType != null">
+                and car_type = #{route.carType}
+            </if>
+            <if test="route.carNumType != null">
+                and car_num_type = #{route.carNumType}
+            </if>
+            <if test="route.driverUid != null">
+                and driver_uid = #{route.driverUid}
+            </if>
+            <if test="route.capacity != null">
+                and capacity = #{route.capacity}
+            </if>
+            <if test="route.startAdress != null and route.startAdress != ''">
+                and start_adress like concat(#{route.startAdress}, "%")
+            </if>
+            <if test="route.endAdress != null and route.endAdress != ''">
+                and end_adress like concat(#{route.endAdress}, "%")
+            </if>
+            <if test="route.departTime != null and route.departTime != ''">
+                and depart_time like concat(#{route.departTime}, "%")
+            </if>
+            <if test="route.delFlag != null">
+                and del_flag = #{route.delFlag}
+            </if>
+            <if test="route.createBy != null">
+                and create_by = #{route.createBy}
+            </if>
+            <if test="route.createTime != null">
+                and create_time = #{route.createTime}
+            </if>
+            <if test="route.updateBy != null">
+                and update_by = #{route.updateBy}
+            </if>
+            <if test="route.updateTime != null">
+                and update_time = #{route.updateTime}
+            </if>
+        </trim>
+    </select>
+
+</mapper>

@@ -120,6 +120,9 @@ var api = {
         quicklyGenerateCodeBatch: BASE_WEB + 'generator/quickly/generate/code/batch',
         checkCodeZipIsExists: BASE_WEB + 'generator/check/codeZip/isExists',
         downloadCodeZip: BASE_WEB + 'generator/download/codeZip'
+    },
+    bus:{
+
     }
 
 };

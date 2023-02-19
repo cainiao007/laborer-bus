@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:replace="common/base::pagetitle"></title>
+    <link th:replace="common/base::static"/>
+</head>
+<body>
+<div class="layui-form" style="padding: 20px 30px 0 0;">
+    <div class="layui-form-item">
+        <label class="layui-form-label">车牌号</label>
+        <div class="layui-input-inline">
+            <input type="text" name="carNum" th:value="${editInfo.carNum}" placeholder="请输入车牌号" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">车辆类型</label>
+        <div class="layui-input-block">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">车牌类型</label>
+        <div class="layui-input-block">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">司机ID</label>
+        <div class="layui-input-inline">
+            <input type="text" name="driverUid" th:value="${editInfo.driverUid}" placeholder="请输入司机ID" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">最大乘车数</label>
+        <div class="layui-input-inline">
+            <input type="text" name="capacity" th:value="${editInfo.capacity}" placeholder="请输入最大乘车数" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">出发地</label>
+        <div class="layui-input-inline">
+            <input type="text" name="startAdress" th:value="${editInfo.startAdress}" placeholder="请输入出发地" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">目的地</label>
+        <div class="layui-input-inline">
+            <input type="text" name="endAdress" th:value="${editInfo.endAdress}" placeholder="请输入目的地" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">发车时间</label>
+        <div class="layui-input-inline">
+            <input type="text" name="departTime" th:value="${editInfo.departTime}" placeholder="请输入发车时间" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">删除标识</label>
+        <div class="layui-input-inline">
+            <input type="text" name="delFlag" th:value="${editInfo.delFlag}" lay-verify="required" placeholder="请输入删除标识" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">创建人</label>
+        <div class="layui-input-inline">
+            <input type="text" name="createBy" th:value="${editInfo.createBy}" placeholder="请输入创建人" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">创建时间</label>
+        <div class="layui-input-inline">
+            <input type="text" name="createTime" id="createTime" th:value="${#strings.replace(editInfo.createTime,'T',' ')}" lay-verify="required" placeholder="请输入创建时间" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">修改人</label>
+        <div class="layui-input-inline">
+            <input type="text" name="updateBy" th:value="${editInfo.updateBy}" placeholder="请输入修改人" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">更新时间</label>
+        <div class="layui-input-inline">
+            <input type="text" name="updateTime" id="updateTime" th:value="${#strings.replace(editInfo.updateTime,'T',' ')}" lay-verify="required" placeholder="请输入更新时间" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-hide">
+        <input type="button" lay-submit="" lay-filter="kFormSubmit" id="kFormSubmit">
+        <input type="text" name="id" th:value="${editInfo.id}" autocomplete="off" class="layui-input">
+    </div>
+</div>
+
+<script th:replace="common/base::context"></script>
+<script th:replace="common/base::mainjs"></script>
+<script>
+    layui.use(['form', 'laydate'], function () {
+        var $ = layui.$, form = layui.form, laydate = layui.laydate;
+
+
+        laydate.render({
+            elem: '#createTime' // 指定元素
+            ,type: 'datetime'
+        });
+        laydate.render({
+            elem: '#updateTime' // 指定元素
+            ,type: 'datetime'
+        });
+
+        //监听提交
+        form.on('submit(kFormSubmit)', function(data){
+            var field = data.field; //获取提交的字段
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+
+            var url = field.id ? 'bus/route/edit' : 'bus/route/add';
+            //提交 Ajax 成功后，关闭当前弹层并重载表格
+            $.ajax({
+                type: req.type.post,
+                url: BASE_WEB + url,
+                data: field,
+                async: false,
+                success: function (r) {
+                    if (r.code === req.status.ok) {
+                        // 重载表格
+                        parent.layui.table.reload('kContentTable');
+                        parent.layer.close(index); //再执行关闭
+                    } else {
+                        busKit.errorMsg(r.msg);
+                    }
+                }
+            });
+
+        });
+    })
+</script>
+</body>
+</html>

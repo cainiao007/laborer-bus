@@ -15,11 +15,11 @@ import javax.sql.DataSource;
  * 作用：mybatisPlus配置<br>
  * 说明：(无)
  *
- * @author kalvin
+ * @author zhao zhenqiang
  * @Date 2019年04月08日 16:47
  */
 @Configuration
-@MapperScan("com.loborer.bus.modules.*.mapper")
+@MapperScan("com.laborer.bus.modules.*.mapper")
 @EnableTransactionManagement
 public class MybatisPlusConfig {
 

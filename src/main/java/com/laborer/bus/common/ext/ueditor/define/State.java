@@ -2,7 +2,7 @@ package com.laborer.bus.common.ext.ueditor.define;
 
 /**
  * 处理状态接口
- * @author hancong03@baidu.com
+ * @author xiaoqiang
  *
  */
 public interface State {

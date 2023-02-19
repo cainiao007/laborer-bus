@@ -1,21 +1,20 @@
 package com.laborer.bus.modules.sys.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-
-import java.util.Date;
-
 import com.laborer.bus.common.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.util.Date;
 
 /**
  * <p>
  * 日志表
  * </p>
  *
- * @author Kalvin
- * @since 2019-05-10
+ * @author zhao zhenqiang
+ * @since 2023-02-18
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

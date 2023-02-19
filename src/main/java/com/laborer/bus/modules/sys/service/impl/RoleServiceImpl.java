@@ -1,4 +1,4 @@
-package com.laborer.bus.modules.sys.service;
+package com.laborer.bus.modules.sys.service.impl;
 
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -8,6 +8,8 @@ import com.laborer.bus.common.utils.ShiroKit;
 import com.laborer.bus.modules.sys.entity.Role;
 import com.laborer.bus.modules.sys.entity.RoleMenu;
 import com.laborer.bus.modules.sys.mapper.RoleMapper;
+import com.laborer.bus.modules.sys.service.IRoleMenuService;
+import com.laborer.bus.modules.sys.service.IRoleService;
 import com.laborer.bus.modules.sys.vo.RoleMenuVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +24,7 @@ import java.util.List;
  * 角色表 服务实现类
  * </p>
  *
- * @author Kalvin
+ * @author zhao zhenqiang
  * @since 2019-04-29
  */
 @Service

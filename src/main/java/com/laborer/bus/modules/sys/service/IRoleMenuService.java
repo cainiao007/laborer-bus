@@ -10,7 +10,7 @@ import java.util.List;
  * 角色菜单表 服务类
  * </p>
  *
- * @author Kalvin
+ * @author zhao zhenqiang
  * @since 2019-04-29
  */
 public interface IRoleMenuService extends IService<RoleMenu> {

@@ -1,4 +1,4 @@
-package com.laborer.bus.modules.sys.service;
+package com.laborer.bus.modules.sys.service.impl;
 
 import cn.hutool.core.collection.CollectionUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.laborer.bus.modules.sys.dto.UserRoleGroupDTO;
 import com.laborer.bus.modules.sys.entity.UserRole;
 import com.laborer.bus.modules.sys.mapper.UserRoleMapper;
+import com.laborer.bus.modules.sys.service.IUserRoleService;
 import com.laborer.bus.modules.sys.vo.UserRoleVO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +20,7 @@ import java.util.List;
  * 用户与角色对应关系 服务实现类
  * </p>
  *
- * @author Kalvin
+ * @author zhao zhenqiang
  * @since 2019-04-29
  */
 @Service

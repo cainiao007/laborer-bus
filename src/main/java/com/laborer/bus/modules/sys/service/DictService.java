@@ -10,7 +10,7 @@ import java.util.List;
  * <p>
  * 字典表 服务类
  * </p>
- * @since 2019-08-10 15:52:56
+ * @since 2023-02-18 15:52:56
  */
 public interface DictService extends IService<Dict> {
 

@@ -1,4 +1,4 @@
-package com.laborer.bus.modules.sys.service;
+package com.laborer.bus.modules.sys.service.impl;
 
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -11,6 +11,8 @@ import com.laborer.bus.common.exception.BusinessException;
 import com.laborer.bus.common.utils.CryptionKit;
 import com.laborer.bus.modules.sys.entity.User;
 import com.laborer.bus.modules.sys.mapper.UserMapper;
+import com.laborer.bus.modules.sys.service.IUserRoleService;
+import com.laborer.bus.modules.sys.service.IUserService;
 import com.laborer.bus.modules.sys.vo.UserQueryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +25,7 @@ import java.util.List;
  * 用户表 服务实现类
  * </p>
  *
- * @author Kalvin
+ * @author zhao zhenqiang
  * @since 2019-04-29
  */
 @Service

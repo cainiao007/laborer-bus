@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 
 /**
  * 错误页面配置
- * @author Kalvin
+ * @author zhao zhenqiang
  */
 @Configuration
 public class ErrorPageConfig implements ErrorPageRegistrar {

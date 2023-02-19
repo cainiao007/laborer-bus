@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
- * 角色带菜单
+ * 角色菜单
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

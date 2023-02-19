@@ -11,7 +11,7 @@ import java.util.List;
  * <p>
  * 字典表 Mapper 接口
  * </p>
- * @since 2019-08-10 14:58:21
+ * @since 2023-02-18 14:58:21
  */
 public interface DictMapper extends BaseMapper<Dict> {
 

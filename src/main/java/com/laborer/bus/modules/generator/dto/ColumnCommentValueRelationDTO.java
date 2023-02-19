@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
  * 列备注的值对应说明关系，如：0：正常；1：禁用
- * @author Kalvin
+ * @author zhao zhenqiang
  * @Date 2019/06/14 11:01
  */
 @Data

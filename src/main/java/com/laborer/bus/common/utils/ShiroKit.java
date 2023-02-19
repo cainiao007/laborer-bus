@@ -15,7 +15,7 @@ import org.apache.shiro.subject.Subject;
  * 作用：Shiro工具类<br>
  * 说明：(无)
  *
- * @author Kalvin
+ * @author zhao zhenqiang
  * @Date 2019年05月05日 13:35
  */
 public class ShiroKit {
