@@ -2,7 +2,7 @@ package com.laborer.bus.modules.generator.constant;
 
 /**
  * 代码模板类型 枚举
- * Create by Kalvin on 2019/6/19.
+ * Create by zhaozhenqiang on 2019/6/19.
  */
 public enum TemplateTypeEnum {
 

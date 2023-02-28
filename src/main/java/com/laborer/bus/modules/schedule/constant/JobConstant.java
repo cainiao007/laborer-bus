@@ -1,7 +1,7 @@
 package com.laborer.bus.modules.schedule.constant;
 
 /**
- * Create by Kalvin on 2019/8/17
+ * Create by zhaozhenqiang on 2019/8/17
  */
 public class JobConstant {
 

@@ -2,7 +2,7 @@ package com.laborer.bus.modules.generator.constant;
 
 /**
  * java类型枚举
- * Create by Kalvin on 2019/8/10
+ * Create by zhaozhenqiang on 2019/8/10
  */
 public enum JavaTypeEnum {
 

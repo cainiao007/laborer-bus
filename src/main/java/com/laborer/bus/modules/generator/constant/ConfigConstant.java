@@ -3,7 +3,7 @@ package com.laborer.bus.modules.generator.constant;
 import lombok.Getter;
 
 /**
- * Create by Kalvin on 2019/6/15
+ * Create by zhaozhenqiang on 2019/6/15
  */
 public class ConfigConstant {
 

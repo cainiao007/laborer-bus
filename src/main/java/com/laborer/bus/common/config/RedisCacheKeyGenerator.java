@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 
 /**
  * 自定义redis key生成策略
- * Create by Kalvin on 2020/4/1.
+ * Create by zhaozhenqiang on 2020/4/1.
  */
 public class RedisCacheKeyGenerator implements KeyGenerator {
 

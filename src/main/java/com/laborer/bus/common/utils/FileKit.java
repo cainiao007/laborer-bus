@@ -10,7 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 
 /**
- * Create by Kalvin on 2020/6/7.
+ * Create by zhaozhenqiang on 2020/6/7.
  */
 public class FileKit {
 

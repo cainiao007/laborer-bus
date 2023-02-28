@@ -48,7 +48,7 @@ public class CodeGenerator2 {
         String projectPath = System.getProperty("user.dir");
         System.out.println("projectPath = " + projectPath);
         gc.setOutputDir(projectPath + "/src/main/java");
-        gc.setAuthor("Kalvin");
+        gc.setAuthor("admin");
         gc.setOpen(false);
         gc.setIdType(IdType.AUTO);
         // gc.setSwagger2(true); 实体属性 Swagger2 注解
@@ -66,7 +66,7 @@ public class CodeGenerator2 {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName(scanner("模块名"));
-        pc.setParent("com.kalvin");
+        pc.setParent("com.laborer");
         mpg.setPackageInfo(pc);
 
         // 自定义配置

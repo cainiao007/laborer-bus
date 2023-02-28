@@ -9,7 +9,7 @@ import org.springframework.scheduling.quartz.QuartzJobBean;
 
 /**
  * 定时任务工具类
- * Create by Kalvin on 2019/8/17
+ * Create by zhaozhenqiang on 2019/8/17
  */
 public class ScheduleKit {
 

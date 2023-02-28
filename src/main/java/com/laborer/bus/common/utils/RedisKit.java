@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * redis redisTemplate api工具类
- * Create by Kalvin on 2021/01/21.
+ * Create by zhaozhenqiang on 2021/01/21.
  */
 @Component
 @ConditionalOnProperty(name = "bus.cache.enable", havingValue = "true")

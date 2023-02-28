@@ -19,7 +19,7 @@ import cn.hutool.core.util.StrUtil;
 
 /**
  * XSS过滤处理
- * Create by Kalvin on 2019/6/25.
+ * Create by zhaozhenqiang on 2019/6/25.
  */
 public class XssHttpRequestWrapper extends HttpServletRequestWrapper {
 

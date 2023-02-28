@@ -12,7 +12,7 @@ import java.util.Map;
 
 /**
  * XssFilter配置
- * Create by Kalvin on 2019/6/25.
+ * Create by zhaozhenqiang on 2019/6/25.
  */
 @Configuration
 public class XssFilterConfig {
@@ -29,7 +29,7 @@ public class XssFilterConfig {
         filterRegistrationBean.addUrlPatterns("/*");
         Map<String, String> initParameters = new HashMap<>();
         // excludes用于配置不需要参数过滤的请求url
-        initParameters.put("excludes", "/favicon.ico,/img/*,/js/*,/css/*");
+        initParameters.put("excludes", "/bus.ico,/img/*,/js/*,/css/*");
         // isIncludeRichText主要用于设置富文本内容是否需要过滤  TODO: 好像无效
         initParameters.put("isIncludeRichText", "true");
         // 配置过滤URL白名单

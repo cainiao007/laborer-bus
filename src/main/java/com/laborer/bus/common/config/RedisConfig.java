@@ -27,7 +27,7 @@ import java.time.Duration;
 
 /**
  * Redis配置
- * Create by Kalvin on 2019/6/25
+ * Create by zhaozhenqiang on 2019/6/25
  */
 @EnableCaching  //启用缓存注解
 @Configuration

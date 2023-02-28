@@ -10,7 +10,7 @@ import java.util.Properties;
 
 /**
  * 定时任务配置
- * Create by Kalvin on 2019/8/17
+ * Create by zhaozhenqiang on 2019/8/17
  */
 @Configuration
 @ConditionalOnProperty(value = "bus.quartz.enable", havingValue = "true")

@@ -71,7 +71,7 @@ var busKit = {
     /**
      * 同步get
      * @param url 请求地址：image/ascii
-     * @param params 参数：{name:'kalvin'}
+     * @param params 参数：{name:'admin'}
      * @param callback 回调函数
      */
     get: function (url, params, callback) {
@@ -84,7 +84,7 @@ var busKit = {
     /**
      * 同步post
      * @param url 请求地址：image/ascii
-     * @param params 参数：{name:'kalvin'}
+     * @param params 参数：{name:'admin'}
      * @param callback 回调函数
      */
     post: function (url, params, callback) {

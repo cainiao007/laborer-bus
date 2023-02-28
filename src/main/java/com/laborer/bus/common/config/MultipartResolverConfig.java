@@ -6,7 +6,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Create by Kalvin on 2019/7/12.
+ * Create by zhaozhenqiang on 2019/7/12.
  */
 @Configuration
 public class MultipartResolverConfig extends CommonsMultipartResolver {
