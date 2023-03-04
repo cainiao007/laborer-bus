@@ -81,6 +81,7 @@
         <if test="routeAppointment.endAddress != null and routeAppointment.endAddress != ''">
             and br.end_address like concat("%", #{routeAppointment.endAddress}, "%")
         </if>
+        order by bra.appointment_date desc
     </select>
     <select id="info" resultType="com.laborer.bus.modules.bus.vo.RouteAppointmentVo">
         SELECT

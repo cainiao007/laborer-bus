@@ -101,8 +101,8 @@ public class RouteAppointmentController extends BaseController {
     @RequiresPermissions("bus:routeAppointment:add")
     @PostMapping(value = "add")
     public R add(RouteAppointment routeAppointment) {
-        routeAppointment.setAppointmentUid(ShiroKit.getUserId());
-        routeAppointmentService.save(routeAppointment);
+
+        routeAppointmentService.add(routeAppointment);
         return R.ok();
     }
 

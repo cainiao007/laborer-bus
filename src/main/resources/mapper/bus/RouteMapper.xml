@@ -91,7 +91,7 @@
             where bra.appointment_uid = #{route.appointmentUid}
             and bra.route_id = br.id
             and bra.appointment_date = date_format(#{route.appointmentDate}, '%Y-%m-%d')
-            and bra.state = 1
+            and bra.state = 0
             )
             and not exists (select id from bus_route_depart brd <!--未发车的-->
             where brd.route_id = br.id

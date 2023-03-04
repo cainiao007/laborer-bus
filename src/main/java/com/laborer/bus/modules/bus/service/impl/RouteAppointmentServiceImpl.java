@@ -46,10 +46,29 @@ public class RouteAppointmentServiceImpl extends ServiceImpl<RouteAppointmentMap
     }
 
     @Override
+    public void add(RouteAppointment routeAppointment) {
+        Long userId = ShiroKit.getUserId();
+
+        // 查询该用户是否已预约该路线
+        LambdaQueryWrapper<RouteAppointment> queryWrapper = new LambdaQueryWrapper<RouteAppointment>()
+                .eq(RouteAppointment::getAppointmentUid, userId)
+                .eq(RouteAppointment::getRouteId, routeAppointment.getRouteId())
+                .eq(RouteAppointment::getAppointmentDate,routeAppointment.getAppointmentDate())
+                .ne(RouteAppointment::getState, Constants.APPOINTMENT_STATUS_CANCEL);
+        Integer count = baseMapper.selectCount(queryWrapper);
+        if (count > 0) {
+            throw new BusinessException("用户已预约该班车路线");
+        }
+
+        // 保存预约信息
+        routeAppointment.setAppointmentUid(userId);
+        baseMapper.insert(routeAppointment);
+    }
+
+    @Override
     public Page<RouteAppointmentVo> record(RouteAppointmentDto routeAppointment) {
         Page<RouteAppointmentVo> page = new Page<>(routeAppointment.getCurrent(), routeAppointment.getSize());
-        Long userId = ShiroKit.getUserId();
-        routeAppointment.setAppointmentUid(userId);
+        routeAppointment.setAppointmentUid(ShiroKit.getUserId());
         List<RouteAppointmentVo> list = baseMapper.record(routeAppointment, page);
         return page.setRecords(list);
     }

@@ -22,6 +22,12 @@ public interface RouteAppointmentService extends IService<RouteAppointment> {
     Page<RouteAppointment> listRouteAppointmentPage(RouteAppointment routeAppointment);
 
     /**
+     * 班车雨夜
+     * @param routeAppointment
+     */
+    void add(RouteAppointment routeAppointment);
+
+    /**
      * 预约记录
      * @param routeAppointment 查询参数
      * @return page
@@ -40,4 +46,5 @@ public interface RouteAppointmentService extends IService<RouteAppointment> {
      * @param routeAppointment
      */
     void depart(RouteAppointmentDto routeAppointment);
+
 }

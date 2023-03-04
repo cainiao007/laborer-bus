@@ -89,6 +89,16 @@
         AND t.appointment_date = bra.appointment_date
         AND t.state = 0
         )
+        and not exists (
+        SELECT
+        count(1)
+        FROM
+        bus_route_depart t
+        where
+        t.route_id = bra.route_id
+        and bra.appointment_date = substring_index( t.plan_depart_time, ' ', 1 )
+        and t.state = 1
+        )
         group by br.id
     </select>
     <select id="record" resultType="com.laborer.bus.modules.bus.vo.RouteDepartVo">
