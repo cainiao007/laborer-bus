@@ -15,15 +15,15 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 班车线路表
+ * 班车预约表
  * </p>
- * @since 2023-03-01 20:57:58
+ * @since 2023-03-01 20:57:59
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("bus_route")
-public class Route extends BaseEntity {
+@TableName("bus_route_appointment")
+public class RouteAppointment extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
@@ -34,45 +34,35 @@ public class Route extends BaseEntity {
     private Long id;
 
     /**
-     * 车牌号
+     * 班车线路id
      */
-    private String carNumber;
+    private Long routeId;
 
     /**
-     * 车型
+     * 预约人uid
      */
-    private Integer carType;
+    private Long appointmentUid;
 
     /**
-     * 座位数
+     * 预约乘车日期
      */
-    private Integer capacity;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date appointmentDate;
 
     /**
-     * 司机uid
+     * 乘车时间
      */
-    private Long driverUid;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date departTime;
 
     /**
-     * 起始地址
+     * 发车记录id
      */
-    private String startAddress;
+    private Long departId;
 
     /**
-     * 目的地址
-     */
-    private String endAddress;
-
-    /**
-     * 计划发车时间
-
-     */
-    private String planDepartTime;
-
-    /**
-     * 状态  
-0删除
-1启用
+     * 状态 1预约成功 
+2取消
 
      */
     private Integer state;

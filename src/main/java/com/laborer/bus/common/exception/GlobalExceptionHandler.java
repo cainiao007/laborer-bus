@@ -17,7 +17,7 @@ public class GlobalExceptionHandler {
     private final static Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler(BusinessException.class)
-    public R handleKvfException(BusinessException e) {
+    public R handleBusinessException(BusinessException e) {
         LOGGER.error("bus error:", e);
         if (e.getErrorCode() == null) {
             return R.fail(e.getMsg());

@@ -77,6 +77,7 @@ var api = {
         userUpdateInfo: BASE_WEB + 'sys/user/updateInfo',
         userResetPwd: BASE_WEB + 'sys/user/{id}/resetPwd',
         userChangePwd: BASE_WEB + 'sys/user/changePwd',
+        getUser: BASE_WEB + 'sys/user/get/',
         menuListData: BASE_WEB + 'sys/menu/list/data',
         menuRm: BASE_WEB + 'sys/menu/remove/',
         menuRmBatch: BASE_WEB + 'sys/menu/removeBatch',
@@ -120,9 +121,6 @@ var api = {
         quicklyGenerateCodeBatch: BASE_WEB + 'generator/quickly/generate/code/batch',
         checkCodeZipIsExists: BASE_WEB + 'generator/check/codeZip/isExists',
         downloadCodeZip: BASE_WEB + 'generator/download/codeZip'
-    },
-    bus:{
-
     }
 
 };

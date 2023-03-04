@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laborer.bus.modules.bus.mapper.RouteDepartMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.laborer.bus.modules.bus.entity.RouteDepart">
+        <id column="id" property="id" />
+        <result column="route_id" property="routeId" />
+        <result column="plan_depart_time" property="planDepartTime" />
+        <result column="depart_time" property="departTime" />
+        <result column="state" property="state" />
+        <result column="create_by" property="createBy" />
+        <result column="create_date" property="createDate" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_date" property="updateDate" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+       id, route_id, plan_depart_time, depart_time, state, create_by, create_date, update_by, update_date
+    </sql>
+
+    <select id="selectRouteDepartList" resultType="com.laborer.bus.modules.bus.entity.RouteDepart">
+        select <include refid="Base_Column_List" /> from bus_route_depart
+        <trim prefix="where" prefixOverrides="and">
+            <if test="routeDepart.routeId != null">
+                and route_id = #{routeDepart.routeId}
+            </if>
+            <if test="routeDepart.planDepartTime != null and routeDepart.planDepartTime != ''">
+                and substring_index(plan_depart_time,' ',1) = #{routeDepart.planDepartTime}
+            </if>
+            <if test="routeDepart.departTime != null">
+                and depart_time = #{routeDepart.departTime}
+            </if>
+            <if test="routeDepart.state != null">
+                and state = #{routeDepart.state}
+            </if>
+            <if test="routeDepart.createBy != null">
+                and create_by = #{routeDepart.createBy}
+            </if>
+            <if test="routeDepart.createDate != null">
+                and create_date = #{routeDepart.createDate}
+            </if>
+            <if test="routeDepart.updateBy != null">
+                and update_by = #{routeDepart.updateBy}
+            </if>
+            <if test="routeDepart.updateDate != null">
+                and update_date = #{routeDepart.updateDate}
+            </if>
+        </trim>
+    </select>
+    <select id="toDepart" resultType="com.laborer.bus.modules.bus.vo.RouteDepartVo">
+        SELECT
+            bra.id,
+            concat(bra.appointment_date," ", br.plan_depart_time) as planDepartTime,
+            bra.route_id,
+            br.car_number,
+            br.car_type,
+            br.capacity,
+            br.driver_uid,
+            br.start_address,
+            br.end_address,
+            count(bra.id) appointmentCnt,
+            bra.state
+        FROM
+            bus_route_appointment bra,
+            bus_route br
+        where bra.route_id = br.id
+          and bra.state = 0
+        <if test="routeDepart.driverUid != null and routeDepart.driverUid != ''">
+            and br.driver_uid like concat("%", #{routeDepart.driverUid}, "%")
+        </if>
+        <if test="routeDepart.carNumber != null and routeDepart.carNumber != ''">
+            and br.car_number like concat("%",#{routeDepart.carNumber}, "%")
+        </if>
+        <if test="routeDepart.startAddress != null and routeDepart.startAddress != ''">
+            and br.start_address like concat("%", #{routeDepart.startAddress}, "%")
+        </if>
+        <if test="routeDepart.endAddress != null and routeDepart.endAddress != ''">
+            and br.end_address like concat("%", #{routeDepart.endAddress}, "%")
+        </if>
+        and exists (
+        SELECT
+        count(1)
+        FROM
+        bus_route_appointment t
+        WHERE
+        t.route_id = bra.route_id
+        AND t.appointment_date = bra.appointment_date
+        AND t.state = 0
+        )
+        group by br.id
+    </select>
+    <select id="record" resultType="com.laborer.bus.modules.bus.vo.RouteDepartVo">
+        SELECT
+        brd.id,
+        brd.plan_depart_time,
+        date_format(brd.depart_time, '%Y-%m-%d %H:%i') as departTime,
+        brd.route_id,
+        br.car_number,
+        br.car_type,
+        br.capacity,
+        br.driver_uid,
+        br.start_address,
+        br.end_address,
+        count( bra.id ) AS appointmentCnt,
+        SUM(IF( bra.state = 2, 1, 0 )) AS passenger
+        FROM
+        bus_route_depart brd
+        LEFT JOIN bus_route br ON brd.route_id = br.id
+        LEFT JOIN bus_route_appointment bra ON br.id = bra.route_id
+        AND bra.state != 1
+        AND bra.appointment_date = substring_index( brd.plan_depart_time, ' ', 1 )
+        where 1=1
+        <if test="routeDepart.driverUid != null">
+            and br.driver_uid = #{routeDepart.driverUid}
+        </if>
+        <if test="routeDepart.carNumber != null and routeDepart.carNumber != ''">
+            and br.car_number like concat("%",#{routeDepart.carNumber}, "%")
+        </if>
+        <if test="routeDepart.startAddress != null and routeDepart.startAddress != ''">
+            and br.start_address like concat("%", #{routeDepart.startAddress}, "%")
+        </if>
+        <if test="routeDepart.endAddress != null and routeDepart.endAddress != ''">
+            and br.end_address like concat("%", #{routeDepart.endAddress}, "%")
+        </if>
+        <if test="routeDepart.departTime != null and routeDepart.departTime != ''">
+            and date_format(brd.depart_time, '%Y-%m-%d') = date_format(#{routeDepart.departTime}, '%Y-%m-%d')
+        </if>
+        GROUP BY brd.id
+    </select>
+
+</mapper>

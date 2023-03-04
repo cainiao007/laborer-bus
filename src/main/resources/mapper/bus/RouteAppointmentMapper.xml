@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laborer.bus.modules.bus.mapper.RouteAppointmentMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.laborer.bus.modules.bus.entity.RouteAppointment">
+        <id column="id" property="id" />
+        <result column="route_id" property="routeId" />
+        <result column="appointment_uid" property="appointmentUid" />
+        <result column="appointment_date" property="appointmentDate" />
+        <result column="depart_time" property="departTime" />
+        <result column="depart_id" property="departId" />
+        <result column="state" property="state" />
+        <result column="create_by" property="createBy" />
+        <result column="create_date" property="createDate" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_date" property="updateDate" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+       id, route_id, appointment_uid, appointment_date, depart_time, depart_id, state, create_by, create_date, update_by, update_date
+    </sql>
+
+    <select id="selectRouteAppointmentList" resultType="com.laborer.bus.modules.bus.entity.RouteAppointment">
+        select <include refid="Base_Column_List" /> from bus_route_appointment
+        <trim prefix="where" prefixOverrides="and">
+            <if test="routeAppointment.routeId != null">
+                and route_id = #{routeAppointment.routeId}
+            </if>
+            <if test="routeAppointment.appointmentUid != null">
+                and appointment_uid = #{routeAppointment.appointmentUid}
+            </if>
+            <if test="routeAppointment.appointmentDate != null">
+                and appointment_date = date_format(#{routeAppointment.appointmentDate}, '%Y-%m-%d')
+            </if>
+            <if test="routeAppointment.departTime != null">
+                and depart_time = #{routeAppointment.departTime}
+            </if>
+            <if test="routeAppointment.departId != null">
+                and depart_id = #{routeAppointment.departId}
+            </if>
+            <if test="routeAppointment.state != null">
+                and state = #{routeAppointment.state}
+            </if>
+        </trim>
+    </select>
+    <select id="record" resultType="com.laborer.bus.modules.bus.vo.RouteAppointmentVo">
+        SELECT
+            bra.id,
+            bra.appointment_uid,
+            bra.appointment_date,
+            bra.route_id,
+            br.car_number,
+            br.car_type,
+            br.capacity,
+            br.driver_uid,
+            br.start_address,
+            br.end_address,
+            br.plan_depart_time,
+            bra.state
+        FROM
+            bus_route_appointment bra,
+            bus_route br
+        where bra.route_id = br.id
+        <if test="routeAppointment.appointmentUid != null">
+            and bra.appointment_uid = #{routeAppointment.appointmentUid}
+        </if>
+        <if test="routeAppointment.appointmentDate != null">
+            and bra.appointment_date = date_format(#{routeAppointment.appointmentDate}, '%Y-%m-%d')
+        </if>
+        <if test="routeAppointment.state != null">
+            and bra.state = #{routeAppointment.state}
+        </if>
+        <if test="routeAppointment.carNumber != null and routeAppointment.carNumber != ''">
+            and br.car_number like concat("%",#{routeAppointment.carNumber}, "%")
+        </if>
+        <if test="routeAppointment.startAddress != null and routeAppointment.startAddress != ''">
+            and br.start_address like concat("%", #{routeAppointment.startAddress}, "%")
+        </if>
+        <if test="routeAppointment.endAddress != null and routeAppointment.endAddress != ''">
+            and br.end_address like concat("%", #{routeAppointment.endAddress}, "%")
+        </if>
+    </select>
+    <select id="info" resultType="com.laborer.bus.modules.bus.vo.RouteAppointmentVo">
+        SELECT
+            bra.id,
+            bra.appointment_uid,
+            bra.appointment_date,
+            bra.route_id,
+            br.car_number,
+            br.car_type,
+            br.capacity,
+            br.driver_uid,
+            br.start_address,
+            br.end_address,
+            br.plan_depart_time,
+            bra.state
+        FROM
+            bus_route_appointment bra,
+            bus_route br
+        where bra.route_id = br.id
+        and bra.id = #{id}
+    </select>
+
+</mapper>

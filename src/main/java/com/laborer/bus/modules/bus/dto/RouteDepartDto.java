@@ -1,12 +1,9 @@
-package com.laborer.bus.modules.bus.entity;
+package com.laborer.bus.modules.bus.dto;
 
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.laborer.bus.common.entity.BaseEntity;
 
 import lombok.Data;
@@ -15,33 +12,31 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 班车线路表
+ * 待发车列表
  * </p>
- * @since 2023-03-01 20:57:58
+ * @since 2023-03-01 20:57:59
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("bus_route")
-public class Route extends BaseEntity {
+public class RouteDepartDto extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * 
      */
-    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
+
+    /**
+     * 班车线路id
+     */
+    private Long routeId;
 
     /**
      * 车牌号
      */
     private String carNumber;
-
-    /**
-     * 车型
-     */
-    private Integer carType;
 
     /**
      * 座位数
@@ -65,15 +60,22 @@ public class Route extends BaseEntity {
 
     /**
      * 计划发车时间
-
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String planDepartTime;
 
     /**
-     * 状态  
-0删除
-1启用
+     * 乘车时间
+     */
+    private Date departTime;
 
+    /**
+     * 发车记录id
+     */
+    private Long departId;
+
+    /**
+     * 状态 1预约成功 2取消
      */
     private Integer state;
 

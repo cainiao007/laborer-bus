@@ -11,27 +11,20 @@
         <label class="layui-form-label">车牌号</label>
         <div class="layui-input-inline">
             <input type="text" name="carNumber" th:value="${editInfo.carNumber}" placeholder="请输入车牌号" autocomplete="off"
-                   class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">车型</label>
-        <div class="layui-input-block">
-            <input type="radio" name="carType" value="1" title="大巴" autocomplete="off" class="layui-input" th:checked="${editInfo.carType==1}">
-            <input type="radio" name="carType" value="2" title="中巴" autocomplete="off" class="layui-input" th:checked="${editInfo.carType==2}">
+                   class="layui-input layui-disabled">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">座位数</label>
         <div class="layui-input-inline">
             <input type="text" name="capacity" th:value="${editInfo.capacity}" lay-verify="required"
-                   placeholder="请输入座位数" autocomplete="off" class="layui-input">
+                   placeholder="请输入座位数" autocomplete="off" class="layui-input layui-disabled">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">司机</label>
         <div class="layui-input-block">
-            <select name="driverUid" id="driverUid" lay-verify="required" lay-filter="xmFilter" autocomplete="off" class="layui-input">
+            <select name="driverUid" id="driverUid" lay-verify="required" lay-filter="xmFilter" autocomplete="off" class="layui-input layui-disabled">
             </select>
         </div>
     </div>
@@ -39,65 +32,48 @@
         <label class="layui-form-label">起始地址</label>
         <div class="layui-input-inline">
             <input type="text" name="startAddress" th:value="${editInfo.startAddress}" lay-verify="required"
-                   placeholder="请输入起始地址" autocomplete="off" class="layui-input">
+                   placeholder="请输入起始地址" autocomplete="off" class="layui-input layui-disabled">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">目的地址</label>
         <div class="layui-input-inline">
             <input type="text" name="endAddress" th:value="${editInfo.endAddress}" lay-verify="required"
-                   placeholder="请输入目的地址" autocomplete="off" class="layui-input">
+                   placeholder="请输入目的地址" autocomplete="off" class="layui-input layui-disabled">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">预约乘车日期</label>
+        <div class="layui-input-inline">
+            <input type="text" name="appointmentDate" id="appointmentDate" th:value="${editInfo.appointmentDate}" lay-verify="required"
+                   placeholder="请输入预约乘车日期" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">计划发车时间</label>
         <div class="layui-input-inline">
             <input type="text" id="planDepartTime" name="planDepartTime" th:value="${editInfo.planDepartTime}" lay-verify="required"
-                   placeholder="请输入计划发车时间" autocomplete="off" class="layui-input">
+                   placeholder="请输入计划发车时间" autocomplete="off" class="layui-input layui-disabled">
         </div>
     </div>
     <div class="layui-form-item layui-hide">
         <input type="button" lay-submit="" lay-filter="kFormSubmit" id="kFormSubmit">
         <input type="text" name="id" th:value="${editInfo.id}" autocomplete="off" class="layui-input">
+        <input type="text" name="routeId" th:value="${editInfo.routeId}" autocomplete="off" class="layui-input">
     </div>
 </div>
 
 <script th:replace="common/base::context"></script>
 <script th:replace="common/base::mainjs"></script>
-<style>
-    /* 设置只展示时分，隐藏秒那一列 */
-    .laydate-time-list {
-        padding-bottom: 0;
-        overflow: hidden;
-    }
-
-    .laydate-time-list > li {
-        width: 50% !important;
-    }
-
-    .laydate-time-list > li:last-child {
-        display: none;
-    }
-
-    .laydate-time-list ol li {
-        width: 100% !important;
-        padding-left: 0 !important;
-        text-align: center !important;
-    }
-</style>
-
 <script>
     layui.use(['form', 'laydate'], function () {
         var $ = layui.$, form = layui.form, laydate = layui.laydate;
 
+        $("#driverUid").attr("disabled","disabled");
+        form.render('select');
 
         laydate.render({
-            elem: '#planDepartTime' // 指定元素
-            , type: 'time'
-            , format: 'HH:mm'
-            , done: function (value, date) {
-
-            }
+            elem: '#appointmentDate' // 指定元素
         });
 
         // 司机下拉列表
@@ -114,12 +90,13 @@
                 layui.form.render();//重新渲染 固定写法
             }
         })
+
         //监听提交
         form.on('submit(kFormSubmit)', function (data) {
             var field = data.field; //获取提交的字段
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
 
-            var url = field.id ? 'bus/route/edit' : 'bus/route/add';
+            var url = field.id ? 'bus/routeAppointment/edit' : 'bus/routeAppointment/add';
             //提交 Ajax 成功后，关闭当前弹层并重载表格
             $.ajax({
                 type: req.type.post,

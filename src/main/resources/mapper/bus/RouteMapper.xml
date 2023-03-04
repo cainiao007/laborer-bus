@@ -5,68 +5,99 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.laborer.bus.modules.bus.entity.Route">
         <id column="id" property="id" />
-        <result column="car_num" property="carNum" />
+        <result column="car_number" property="carNumber" />
         <result column="car_type" property="carType" />
-        <result column="car_num_type" property="carNumType" />
-        <result column="driver_uid" property="driverUid" />
         <result column="capacity" property="capacity" />
-        <result column="start_adress" property="startAdress" />
-        <result column="end_adress" property="endAdress" />
-        <result column="depart_time" property="departTime" />
-        <result column="del_flag" property="delFlag" />
+        <result column="driver_uid" property="driverUid" />
+        <result column="start_address" property="startAddress" />
+        <result column="end_address" property="endAddress" />
+        <result column="plan_depart_time" property="planDepartTime" />
+        <result column="state" property="state" />
         <result column="create_by" property="createBy" />
-        <result column="create_time" property="createTime" />
+        <result column="create_date" property="createDate" />
         <result column="update_by" property="updateBy" />
-        <result column="update_time" property="updateTime" />
+        <result column="update_date" property="updateDate" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-       id, car_num, car_type, car_num_type, driver_uid, capacity, start_adress, end_adress, depart_time, del_flag, create_by, create_time, update_by, update_time
+       id, car_number, car_type, capacity, driver_uid, start_address, end_address, plan_depart_time, state, create_by, create_date, update_by, update_date
     </sql>
 
     <select id="selectRouteList" resultType="com.laborer.bus.modules.bus.entity.Route">
         select <include refid="Base_Column_List" /> from bus_route
         <trim prefix="where" prefixOverrides="and">
-            <if test="route.carNum != null and route.carNum != ''">
-                and car_num like concat(#{route.carNum}, "%")
+            <if test="route.carNumber != null and route.carNumber != ''">
+                and car_number like concat("%",#{route.carNumber}, "%")
             </if>
             <if test="route.carType != null">
                 and car_type = #{route.carType}
             </if>
-            <if test="route.carNumType != null">
-                and car_num_type = #{route.carNumType}
-            </if>
-            <if test="route.driverUid != null">
-                and driver_uid = #{route.driverUid}
-            </if>
             <if test="route.capacity != null">
                 and capacity = #{route.capacity}
             </if>
-            <if test="route.startAdress != null and route.startAdress != ''">
-                and start_adress like concat(#{route.startAdress}, "%")
+            <if test="route.driverUid != null ">
+                and driver_uid = #{route.driverUid}
             </if>
-            <if test="route.endAdress != null and route.endAdress != ''">
-                and end_adress like concat(#{route.endAdress}, "%")
+            <if test="route.startAddress != null and route.startAddress != ''">
+                and start_address like concat("%", #{route.startAddress}, "%")
             </if>
-            <if test="route.departTime != null and route.departTime != ''">
-                and depart_time like concat(#{route.departTime}, "%")
+            <if test="route.endAddress != null and route.endAddress != ''">
+                and end_address like concat("%", #{route.endAddress}, "%")
             </if>
-            <if test="route.delFlag != null">
-                and del_flag = #{route.delFlag}
+            <if test="route.planDepartTime != null and route.planDepartTime != ''">
+                and plan_depart_time like concat(#{route.planDepartTime}, "%")
+            </if>
+            <if test="route.state != null">
+                and state = #{route.state}
             </if>
             <if test="route.createBy != null">
                 and create_by = #{route.createBy}
             </if>
-            <if test="route.createTime != null">
-                and create_time = #{route.createTime}
+            <if test="route.createDate != null">
+                and create_date = #{route.createDate}
             </if>
             <if test="route.updateBy != null">
                 and update_by = #{route.updateBy}
             </if>
-            <if test="route.updateTime != null">
-                and update_time = #{route.updateTime}
+            <if test="route.updateDate != null">
+                and update_date = #{route.updateDate}
             </if>
+        </trim>
+    </select>
+
+    <select id="reservable" resultType="com.laborer.bus.modules.bus.entity.Route">
+        select id, car_number, car_type, capacity, driver_uid, start_address, end_address, plan_depart_time, state from bus_route br
+        <trim prefix="where" prefixOverrides="and">
+            <if test="route.carNumber != null and route.carNumber != ''">
+                and car_number like concat("%",#{route.carNumber}, "%")
+            </if>
+            <if test="route.carType != null">
+                and car_type = #{route.carType}
+            </if>
+            <if test="route.dateType == '0'.toString">
+                and plan_depart_time >= #{route.planDepartTime}
+            </if>
+            <if test="route.driverUid != null ">
+                and driver_uid = #{route.driverUid}
+            </if>
+            <if test="route.startAddress != null and route.startAddress != ''">
+                and start_address like concat("%", #{route.startAddress}, "%")
+            </if>
+            <if test="route.endAddress != null and route.endAddress != ''">
+                and end_address like concat("%", #{route.endAddress}, "%")
+            </if>
+            and not exists (select id from bus_route_appointment bra <!--未预约相同日期和班次的-->
+            where bra.appointment_uid = #{route.appointmentUid}
+            and bra.route_id = br.id
+            and bra.appointment_date = date_format(#{route.appointmentDate}, '%Y-%m-%d')
+            and bra.state = 1
+            )
+            and not exists (select id from bus_route_depart brd <!--未发车的-->
+            where brd.route_id = br.id
+            and brd.state = 1
+            and date_format(brd.depart_time, '%Y-%m-%d') = date_format(#{route.appointmentDate}, '%Y-%m-%d')
+            )
         </trim>
     </select>
 

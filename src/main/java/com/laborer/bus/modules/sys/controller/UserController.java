@@ -1,10 +1,20 @@
 package com.laborer.bus.modules.sys.controller;
 
 
-import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.util.StrUtil;
+import java.util.List;
+
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.laborer.bus.common.constant.SysConstant;
 import com.laborer.bus.common.controller.BaseController;
 import com.laborer.bus.common.dto.R;
 import com.laborer.bus.common.utils.CryptionKit;
@@ -17,20 +27,16 @@ import com.laborer.bus.modules.sys.service.IDeptService;
 import com.laborer.bus.modules.sys.service.IUserRoleService;
 import com.laborer.bus.modules.sys.service.IUserService;
 import com.laborer.bus.modules.sys.vo.UserQueryVO;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.StrUtil;
 
 /**
  * <p>
  * 用户表 前端控制器
  * </p>
  *
- * @author zhao zhenqiang
+ * @author Kalvin
  * @since 2019-04-29
  */
 @RestController
@@ -92,7 +98,11 @@ public class UserController extends BaseController {
     @Transactional
     @PostMapping(value = "add")
     public R add(User user, @RequestParam("roleIds") List<Long> roleIds) {
-        userService.addUser(user, roleIds);
+        user.setDeptId(user.getDeptId() == null ? 0 : user.getDeptId());
+        // 生成用户初始密码并加密
+        user.setPassword(CryptionKit.genUserPwd());
+        userService.saveOrUpdate(user);
+        userRoleService.saveOrUpdateBatchUserRole(roleIds, user.getId());
         return R.ok();
     }
 
@@ -100,7 +110,9 @@ public class UserController extends BaseController {
     @Transactional
     @PostMapping(value = "edit")
     public R edit(User user, @RequestParam("roleIds") List<Long> roleIds) {
-        userService.updateUser(user, roleIds);
+        user.setDeptId(user.getDeptId() == null ? 0 : user.getDeptId());
+        userService.updateById(user);
+        userRoleService.saveOrUpdateBatchUserRole(roleIds, user.getId());
         return R.ok();
     }
 
@@ -113,10 +125,6 @@ public class UserController extends BaseController {
     @RequiresPermissions("sys:user:del")
     @PostMapping(value = "remove/{id}")
     public R remove(@PathVariable Long id) {
-        User user = userService.getById(id);
-        if (user.getUsername().equals(SysConstant.ADMIN)) {
-            return R.fail("不允许删除超级管理员【" + SysConstant.ADMIN + "】用户");
-        }
         userService.removeById(id);
         return R.ok();
     }
@@ -124,7 +132,7 @@ public class UserController extends BaseController {
     @RequiresPermissions("sys:user:del")
     @PostMapping(value = "removeBatch")
     public R removeBatch(@RequestParam("ids") List<Long> ids) {
-        userService.deleteByIds(ids);
+        userService.removeByIds(ids);
         return R.ok();
     }
 
@@ -166,5 +174,9 @@ public class UserController extends BaseController {
         return R.ok();
     }
 
+    @GetMapping(value = "get/{id}")
+    public R get(@PathVariable Long id) {
+        return R.ok(userService.getById(id));
+    }
 }
 

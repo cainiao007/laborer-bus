@@ -219,7 +219,7 @@ docker-compose up -d kvf-admin
 * 缓存使用[点我](https://my.oschina.net/sdlvzg/blog/1608871)：对需要加入缓存的方法上添加`@Cacheable(value="cache_name")`注解即可，同时需要在对应的方法上加上更新或删除缓存注解`@CacheEvict(value = "cache_name", allEntries = true)`;也可以使用redisTemplate添加删除更新缓存
 * 代码生成器使用文档[点我](https://github.com/kalvinGit/kvf-admin/wiki/kvf%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3)
 * Spring上下文工具【SpringContextKit.java】，可使用它手动获取指定bean。如`IUserService userService = SpringContextKit.getBean(IUserService.class);`
-* 自定义异常处理类【KvfException.java】，可用于业务层【service】抛出业务异常，如：`throw new KvfException("不存在的任务ID");` ，前端可接收到这个提示信息
+* 自定义异常处理类【BusinessException.java】，可用于业务层【service】抛出业务异常，如：`throw new BusinessException("不存在的任务ID");` ，前端可接收到这个提示信息
 * 统一接口返回数据封装类【R.java】，可用于控制层【controller】返回成功或失败等数据。如`R.ok(data); 或 R.fail("验证码不正确");`
 * 开发环境【dev】默认关闭登录验证码，若需要开启验证码登录可在application-dev.yml配置开启
 * 通用文件上传接口：CommonController->fileUpload

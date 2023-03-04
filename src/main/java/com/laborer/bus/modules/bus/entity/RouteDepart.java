@@ -1,5 +1,6 @@
 package com.laborer.bus.modules.bus.entity;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -15,15 +16,15 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 班车线路表
+ * 班车发车记录表
  * </p>
- * @since 2023-03-01 20:57:58
+ * @since 2023-03-01 20:57:59
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("bus_route")
-public class Route extends BaseEntity {
+@TableName("bus_route_depart")
+public class RouteDepart extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
@@ -34,40 +35,20 @@ public class Route extends BaseEntity {
     private Long id;
 
     /**
-     * 车牌号
+     * 班车线路id
      */
-    private String carNumber;
-
-    /**
-     * 车型
-     */
-    private Integer carType;
-
-    /**
-     * 座位数
-     */
-    private Integer capacity;
-
-    /**
-     * 司机uid
-     */
-    private Long driverUid;
-
-    /**
-     * 起始地址
-     */
-    private String startAddress;
-
-    /**
-     * 目的地址
-     */
-    private String endAddress;
+    private Long routeId;
 
     /**
      * 计划发车时间
-
      */
     private String planDepartTime;
+
+    /**
+     * 实际发车时间
+     */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date departTime;
 
     /**
      * 状态  
@@ -86,7 +67,7 @@ public class Route extends BaseEntity {
      * 
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date createDate;
+    private LocalDateTime createDate;
 
     /**
      * 

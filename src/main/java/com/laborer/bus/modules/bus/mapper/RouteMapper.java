@@ -1,17 +1,17 @@
 package com.laborer.bus.modules.bus.mapper;
 
+import java.util.List;
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import org.apache.ibatis.annotations.Param;
+import com.laborer.bus.modules.bus.dto.RouteDto;
 import com.laborer.bus.modules.bus.entity.Route;
-
-import java.util.List;
 
 /**
  * <p>
- * 班车路线表 Mapper 接口
+ * 班车线路表 Mapper 接口
  * </p>
- * @since 2023-02-19 17:43:30
+ * @since 2023-03-01 20:57:58
  */
 public interface RouteMapper extends BaseMapper<Route> {
 
@@ -21,6 +21,13 @@ public interface RouteMapper extends BaseMapper<Route> {
      * @param page 分页参数
      * @return list
      */
-    List<Route> selectRouteList(@Param("route") Route route, IPage page);
+    List<Route> selectRouteList(Route route, IPage page);
 
+    /**
+     * 可预约列表
+     * @param route 查询参数
+     * @param page 分页参数
+     * @return list
+     */
+    List<Route> reservable(RouteDto route, IPage page);
 }
