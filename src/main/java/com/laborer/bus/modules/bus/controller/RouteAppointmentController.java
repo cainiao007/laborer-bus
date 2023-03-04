@@ -101,7 +101,6 @@ public class RouteAppointmentController extends BaseController {
     @RequiresPermissions("bus:routeAppointment:add")
     @PostMapping(value = "add")
     public R add(RouteAppointment routeAppointment) {
-
         routeAppointmentService.add(routeAppointment);
         return R.ok();
     }
@@ -120,9 +119,9 @@ public class RouteAppointmentController extends BaseController {
         return R.ok();
     }
 
-    @RequiresPermissions("bus:routeAppointment:del")
-    @PostMapping(value = "del/{id}")
-    public R del(@PathVariable Long id) {
+    @RequiresPermissions("bus:routeAppointment:cancel")
+    @PostMapping(value = "cancel/{id}")
+    public R cancel(@PathVariable Long id) {
         routeAppointmentService.update(new LambdaUpdateWrapper<RouteAppointment>()
                 .eq(RouteAppointment::getId, id)
                 .set(RouteAppointment::getState, Constants.APPOINTMENT_STATUS_CANCEL));

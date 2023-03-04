@@ -68,7 +68,7 @@
         where bra.route_id = br.id
           and bra.state = 0
         <if test="routeDepart.driverUid != null and routeDepart.driverUid != ''">
-            and br.driver_uid like concat("%", #{routeDepart.driverUid}, "%")
+            and br.driver_uid = #{routeDepart.driverUid}
         </if>
         <if test="routeDepart.carNumber != null and routeDepart.carNumber != ''">
             and br.car_number like concat("%",#{routeDepart.carNumber}, "%")
@@ -88,16 +88,6 @@
         t.route_id = bra.route_id
         AND t.appointment_date = bra.appointment_date
         AND t.state = 0
-        )
-        and not exists (
-        SELECT
-        count(1)
-        FROM
-        bus_route_depart t
-        where
-        t.route_id = bra.route_id
-        and bra.appointment_date = substring_index( t.plan_depart_time, ' ', 1 )
-        and t.state = 1
         )
         group by br.id
     </select>

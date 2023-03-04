@@ -31,7 +31,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">司机</label>
         <div class="layui-input-block">
-            <select name="driverUid" id="driverUid" lay-verify="required" lay-filter="xmFilter" autocomplete="off" class="layui-input">
+            <select name="driverUid" id="driverUid" th:value="${editInfo.driverUid}" lay-verify="required" lay-filter="xmFilter" autocomplete="off" class="layui-input">
             </select>
         </div>
     </div>
